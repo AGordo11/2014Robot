@@ -1,8 +1,8 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import edu.wpi.first.wpilibj.command.*;
-import edu.wpi.first.wpilibj.templates.*;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.*;
 
 public class AirCompressor extends Subsystem{
     Compressor comp;

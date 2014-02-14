@@ -1,30 +1,26 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.templates.Global;
+import edu.wpi.first.wpilibj.Timer;
 
-public class Spin extends CommandBase{
+public class EncoderTest extends CommandBase{
     Timer timer;
     
-    public Spin(){
+    public EncoderTest(){
         requires(dr);
         timer = new Timer();
     }
 
     protected void initialize(){
+        dr.Move(-0.40, 0.40);
         timer.start();
     }
 
-    protected void execute(){
-        if(Global.isRight){
-            dr.TankDrive(-1.0, 1.0);
-        }else{
-            dr.TankDrive(1.0, -1.0);
-        }
-    }
+    protected void execute(){}
 
     protected boolean isFinished(){
-        if(timer.get() >= 0.3){
+        if(Global.travelled >= 250 || timer.get() >= 8){//When the robot goes 250 inches, stop it
+            dr.Stop();
             timer.stop();
             timer.reset();
             return true;
@@ -33,7 +29,9 @@ public class Spin extends CommandBase{
         }
     }
 
-    protected void end(){}
-    
+    protected void end(){
+        dr.Stop();
+    }
+
     protected void interrupted(){}
 }

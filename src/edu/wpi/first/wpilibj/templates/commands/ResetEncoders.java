@@ -1,22 +1,22 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-public class ChangeGears extends CommandBase{
+public class ResetEncoders extends CommandBase{
     
-    public ChangeGears(){
+    public ResetEncoders(){
         requires(dr);
     }
 
     protected void initialize(){
-        dr.ChangeGears();
+        dr.ResetEncoders();
     }
 
-    protected void execute(){}
+    protected void execute() {}
 
-    protected boolean isFinished(){
+    protected boolean isFinished() {
         return true;
     }
 
-    protected void end(){}
+    protected void end() {}
     
     protected void interrupted(){}
 }

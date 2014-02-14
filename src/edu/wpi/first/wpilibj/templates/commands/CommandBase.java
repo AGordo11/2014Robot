@@ -8,6 +8,7 @@ public abstract class CommandBase extends Command{
     public static OI oi;
     public static AirCompressor co = new AirCompressor();
     public static Drive dr = new Drive();
+    public static Intake in = new Intake();
     public static SDUpdater sd = new SDUpdater();
     public static Shooter sh = new Shooter();
 

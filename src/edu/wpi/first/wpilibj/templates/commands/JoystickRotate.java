@@ -1,21 +1,15 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.*;
-
-public class RunWinch extends CommandBase{
+public class JoystickRotate extends CommandBase{
     
-    public RunWinch(){
-        requires(sh);
+    public JoystickRotate(){
+        requires(in);
     }
 
     protected void initialize(){}
 
     protected void execute(){
-        if(Global.isUp){
-            sh.Retract();
-        }else{
-            sh.Release();
-        }
+        in.Rotate(oi.getShooterY());
     }
 
     protected boolean isFinished(){

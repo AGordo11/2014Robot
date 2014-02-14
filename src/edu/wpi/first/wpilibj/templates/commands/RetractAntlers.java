@@ -1,22 +1,24 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-public class ChangeGears extends CommandBase{
+public class RetractAntlers extends CommandBase{
     
-    public ChangeGears(){
-        requires(dr);
+    public RetractAntlers() {
+        requires(sh);
     }
 
     protected void initialize(){
-        dr.ChangeGears();
+        sh.Retract();
     }
 
     protected void execute(){}
 
     protected boolean isFinished(){
-        return true;
+        return false;
     }
 
-    protected void end(){}
-    
+    protected void end(){
+        sh.Stop();
+    }
+
     protected void interrupted(){}
 }

@@ -1,24 +1,25 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.templates.*;
-import edu.wpi.first.wpilibj.templates.commands.*;
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.templates.Global;
+import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 
 public class Drive extends PIDSubsystem{
     public static final double P = 0;
     public static final double I = 0;
     public static final double D = 0;
-    public static final double pulseDistance = 0.0238817285;
+    public static double pulseDistance;
     
     Encoder lEnc, rEnc;
     RobotDrive drive;
@@ -28,7 +29,7 @@ public class Drive extends PIDSubsystem{
     public PIDController pid;
     private PIDOutput output = new PIDOutput(){
         public void pidWrite(double output){
-            drive.tankDrive(output, output);
+            drive.tankDrive(-output, output);
         }
     };
     private PIDSource source = new PIDSource(){
@@ -40,6 +41,14 @@ public class Drive extends PIDSubsystem{
     public Drive(){       
         super("Drive", P, I, D);
         
+        if(Global.isPrac){
+            //pulseDistance = .096132735;
+            pulseDistance = 1;
+        }else{
+            //pulseDistance = .096132735;
+            pulseDistance = 1;
+        }
+        
         lTal = new Talon(RobotMap.Left_Talon);
         rTal = new Talon(RobotMap.Right_Talon);
         LiveWindow.addActuator("Drive", "Left Motor", lTal);
@@ -47,6 +56,10 @@ public class Drive extends PIDSubsystem{
         
         lEnc = new Encoder(RobotMap.Left_EncoderA, RobotMap.Left_EncoderB, false, CounterBase.EncodingType.k4X);
         rEnc = new Encoder(RobotMap.Right_EncoderA, RobotMap.Right_EncoderB, false, CounterBase.EncodingType.k4X);
+        lEnc.setDistancePerPulse(pulseDistance);
+        rEnc.setDistancePerPulse(pulseDistance);
+        lEnc.setPIDSourceParameter(PIDSource.PIDSourceParameter.kDistance);
+        rEnc.setPIDSourceParameter(PIDSource.PIDSourceParameter.kDistance);
         lEnc.start();
         rEnc.start();
         LiveWindow.addSensor("Drive", "Left Encoder", lEnc);
@@ -64,11 +77,11 @@ public class Drive extends PIDSubsystem{
        
     protected void usePIDOutput(double output){}
     
-    public void ChangeGearsHigh(boolean highGear){
+    public void ChangeGears(){
         if(!highGear()){
-            gearSol.set(false);//If gear solenoid is low, set to high
+            gearSol.set(false);//If gear solenoid is low, set to false/high gear
         }else{
-            gearSol.set(true);//If gear solenoid is high, set to false
+            gearSol.set(true);//If gear solenoid is high, set to true/low gear
         }
     }
     
@@ -83,6 +96,11 @@ public class Drive extends PIDSubsystem{
         
     public void initDefaultCommand(){
         setDefaultCommand(new JoystickDrive());
+    }
+    
+    public void Move(double left, double right){
+        lTal.set(left);
+        rTal.set(right);
     }
     
     public void ResetEncoders(){
@@ -102,12 +120,12 @@ public class Drive extends PIDSubsystem{
         drive.tankDrive(lOut, rOut);
     }
     
-    public boolean highGear(){//Returns high as true
+    public boolean highGear(){//Returns high as true, even though .get() returns as false
         return !gearSol.get();
     }
         
     public double getLeftEnc(){
-        return lEnc.get();
+        return lEnc.getDistance();
     }
     
     public double getLeftMotor(){
@@ -115,7 +133,7 @@ public class Drive extends PIDSubsystem{
     }
     
     public double getRightEnc(){
-        return rEnc.get();
+        return rEnc.getDistance();
     }
     
     public double getRightMotor(){
@@ -123,7 +141,7 @@ public class Drive extends PIDSubsystem{
     }
     
     public double getTravelled(){
-        return lEnc.getDistance();
+        return (lEnc.getDistance() + rEnc.getDistance()) / 2;
     }
     
     protected double returnPIDInput() {

@@ -6,7 +6,6 @@ public class AutoTest extends CommandGroup {
     
     public AutoTest(){
         addSequential(new WhereHot());
-        addSequential(new GoForward(150));
         addSequential(new Spin());
     }
 }

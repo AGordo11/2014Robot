@@ -9,16 +9,19 @@ public class RobotMap{
     //Motor Controllers
     public static final int Left_Talon = 1;
     public static final int Right_Talon = 2;
+    public static final int Roller_Talon = 3;
+    public static final int Rotator_Talon = 4;
+    public static final int Shooter_Talon = 5;
     
     //Relay Outputs
     public static final int Compressor_Relay = 1;
     
     //Digital Inputs
     public static final int Compressor_DI = 1;
-    public static final int Left_EncoderB = 2;
-    public static final int Left_EncoderA = 3;
-    public static final int Right_EncoderB = 4;
-    public static final int Right_EncoderA = 5;
+    public static final int Right_EncoderB = 2;
+    public static final int Right_EncoderA = 3;
+    public static final int Left_EncoderB = 4;
+    public static final int Left_EncoderA = 5;
     
     //Solenoids
     public static final int Gear_Solenoid = 1;

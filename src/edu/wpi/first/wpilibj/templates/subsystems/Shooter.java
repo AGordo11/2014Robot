@@ -1,36 +1,25 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.templates.*;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 public class Shooter extends Subsystem{
-    Talon winchTal;
-    Solenoid brakeSol, shifterSol;
+    Talon sTal;
     
     public Shooter(){
-        //winchTal = new Talon(RobotMap.Winch_Talon);
-        
-        //brakeSol = new Solenoid(RobotMap.Winch_Talon);
-        //shifterSol = new Solenoid(RobotMap.Shifter_Solenoid);
+        sTal = new Talon(RobotMap.Shooter_Talon);
+        LiveWindow.addActuator("Shooter", "Shooter Motor", sTal);
     }
     
     public void initDefaultCommand(){}
     
-    public void Release(){
-        //brakeSol.set(false);
-    }
-    
     public void Retract(){
-        /*winchTal.set(1);
-        brakeSol.set(false);
-        shifterSol.set(false);*/
+        sTal.set(-0.1);
     }
     
     public void Stop(){
-        /*winchTal.set(0);
-        brakeSol.set(true);
-        shifterSol.set(true);*/
+        sTal.set(0);
     }
 }

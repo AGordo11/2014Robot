@@ -51,8 +51,5 @@ public class GoForward extends CommandBase{
 
     protected void end(){}
     
-    protected void interrupted(){
-        //dr.pid.disable();
-        dr.Stop();
-    }
+    protected void interrupted(){}
 }

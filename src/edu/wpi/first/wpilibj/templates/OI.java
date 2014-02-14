@@ -1,47 +1,44 @@
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.*;
-//126 hours logged
+//140 hours logged
 public class OI{
     Joystick lStick, rStick, sStick;
-    JoystickButton lTrig,
-            rTrig, rBut4, rBut5,
-            sTrig;
-    RobotDrive drive;
+    JoystickButton lTrig, lBut2,
+            rTrig,
+            sTrig, sBut2, sBut3, sBut5;
     
     public OI(){
         lStick = new Joystick(RobotMap.Left_Joystick);
         lTrig = new JoystickButton(lStick, 1);
+        lBut2 = new JoystickButton(lStick, 2);
         
         rStick = new Joystick(RobotMap.Right_Joystick);
         rTrig = new JoystickButton(rStick, 1);
         
         sStick = new Joystick(RobotMap.Shooter_Joystick);
-        sTrig = new JoystickButton(sStick, 1);
+        sBut2 = new JoystickButton(sStick, 2);
+        sBut3 = new JoystickButton(sStick, 3);
+        sBut5 = new JoystickButton(sStick, 5);
         
         lTrig.whenPressed(new ChangeGears());
+        lBut2.whenPressed(new ResetEncoders());
         
-        //rBut4.whenPressed(new Spin(false));
-        //rBut5.whenPressed(new Spin(true));   
+        rTrig.whenPressed(new EncoderTest());
+        
+        sBut2.whileHeld(new RetractAntlers());
+        sBut3.whileHeld(new RunSpittake());
+        sBut5.whileHeld(new RunIntake());
     }
     
     public Joystick getLeftStick(){
         return lStick;
     }
     
-    public double getLeftThrottle(){
-        return -1 * lStick.getZ();
-    }
-    
     public Joystick getRightStick(){
         return rStick;
-    }
-    
-    public double getRightThrottle(){
-        return -1 * rStick.getZ();
     }
     
     public Joystick getShooterStick(){
@@ -49,7 +46,11 @@ public class OI{
     }
     
     public double getShooterThrottle(){
-        return -1 * sStick.getThrottle();
+        return (-sStick.getThrottle() + 1) / 2;
+    }
+    
+    public double getShooterY(){
+        return sStick.getY();
     }
 }
 
