@@ -3,7 +3,6 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.Timer;
 
 public class GoForward extends CommandBase{
-    public static final double maxDeviation = 3;
     int inches;
     
     Timer timer;
@@ -15,34 +14,24 @@ public class GoForward extends CommandBase{
     }
 
     protected void initialize(){
-        dr.ResetEncoders();
         timer.start();
+        dr.ResetEncoders();
+        dr.pid.setSetpoint(inches);
+        dr.pid.enable();
     }
 
     protected void execute(){
-        if(inches > 0){
-            dr.SetRange(0.5, 1.0);
-            if(dr.getTravelled() > inches){
-                dr.SetRange(-1.0, 1.0);
-            }
-        }else if(inches < 0){
-            dr.SetRange(-1.0, -0.5);
-            if(dr.getTravelled() > inches){
-                dr.SetRange(-1.0, 1.0);
-            }
-        }else{
-            dr.SetRange(-1.0, 1.0);
+        if(inches <= 0){
+            inches = -inches;
         }
-        dr.Go(inches);
     }
 
     protected boolean isFinished(){
-        if((dr.getTravelled() - inches) < maxDeviation || timer.get() >= 4){
+        if(dr.getRightEnc() - inches > -3 || timer.get() >= 5){
             timer.stop();
             timer.reset();
             dr.pid.disable();
             dr.Stop();
-            dr.SetRange(-1.0, 1.0);
             return true;
         }else{
             return false;
@@ -51,5 +40,10 @@ public class GoForward extends CommandBase{
 
     protected void end(){}
     
-    protected void interrupted(){}
+    protected void interrupted(){
+        dr.Stop();
+        dr.pid.disable();
+        timer.stop();
+        timer.reset();
+    }
 }

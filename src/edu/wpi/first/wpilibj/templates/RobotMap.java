@@ -14,7 +14,7 @@ public class RobotMap{
     public static final int Shooter_Talon = 5;
     
     //Relay Outputs
-    public static final int Compressor_Relay = 1;
+    public static final int Compressor_Relay = 2;
     
     //Digital Inputs
     public static final int Compressor_DI = 1;
@@ -22,7 +22,14 @@ public class RobotMap{
     public static final int Right_EncoderA = 3;
     public static final int Left_EncoderB = 4;
     public static final int Left_EncoderA = 5;
+    public static final int Shooter_Sensor = 6;
     
     //Solenoids
     public static final int Gear_Solenoid = 1;
+    public static final int Stopper_Solenoid = 2;
+    
+    //Analog Inputs
+    public static final int Rotator_Pot = 1;
+    public static final int Proximity_Sen = 2;
+    //public static final int Shooter_Sensor = 4;
 }

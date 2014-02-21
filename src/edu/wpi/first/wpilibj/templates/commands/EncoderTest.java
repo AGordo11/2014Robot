@@ -1,6 +1,5 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.Global;
 import edu.wpi.first.wpilibj.Timer;
 
 public class EncoderTest extends CommandBase{
@@ -13,13 +12,14 @@ public class EncoderTest extends CommandBase{
 
     protected void initialize(){
         dr.Move(-0.40, 0.40);
+        dr.ResetEncoders();
         timer.start();
     }
 
     protected void execute(){}
 
     protected boolean isFinished(){
-        if(Global.travelled >= 250 || timer.get() >= 8){//When the robot goes 250 inches, stop it
+        if(dr.getRightEnc() >= 100 || timer.get() >= 5){//When the robot goes 1000(?) inches, stop it
             dr.Stop();
             timer.stop();
             timer.reset();

@@ -1,24 +1,22 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-public class RetractAntlers extends CommandBase{
+public class Stopper extends CommandBase{
     
-    public RetractAntlers() {
+    public Stopper(){
         requires(sh);
     }
 
     protected void initialize(){
-        sh.Retract();
+        //sh.MoveStopper();
     }
 
     protected void execute(){}
 
     protected boolean isFinished(){
-        return false;
+        return true;
     }
 
-    protected void end(){
-        sh.Stop();
-    }
+    protected void end(){}
 
     protected void interrupted(){}
 }

@@ -17,16 +17,17 @@ public class Spin extends CommandBase{
 
     protected void execute(){
         if(Global.isRight){
-            dr.TankDrive(-1.0, 1.0);
+            dr.TankDrive(-1.0, -1.0);
         }else{
-            dr.TankDrive(1.0, -1.0);
+            dr.TankDrive(1.0, 1.0);
         }
     }
 
     protected boolean isFinished(){
-        if(timer.get() >= 0.3){
+        if(timer.get() >= 0.1){
             timer.stop();
             timer.reset();
+            dr.Stop();
             return true;
         }else{
             return false;
@@ -35,5 +36,9 @@ public class Spin extends CommandBase{
 
     protected void end(){}
     
-    protected void interrupted(){}
+    protected void interrupted(){
+        timer.stop();
+        timer.reset();
+        dr.Stop();
+    }
 }

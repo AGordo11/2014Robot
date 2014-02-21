@@ -1,13 +1,13 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-public class ResetEncoders extends CommandBase{
+public class LowGear extends CommandBase{
     
-    public ResetEncoders(){
+    public LowGear() {
         requires(dr);
     }
 
     protected void initialize(){
-        dr.ResetEncoders();
+        dr.ForceLow();
     }
 
     protected void execute(){}
@@ -17,6 +17,6 @@ public class ResetEncoders extends CommandBase{
     }
 
     protected void end(){}
-    
+
     protected void interrupted(){}
 }

@@ -3,23 +3,38 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.*;
-import edu.wpi.first.wpilibj.smartdashboard.*;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.*;
 
 public class Main extends IterativeRobot{
     Command autoCom;
     Command comp;
+    Command reset;
+    Command gears;
+    SendableChooser sen;
 
     public void robotInit(){    
         comp = new CompressorStart();
+        reset = new ResetEncoders();
+        gears = new LowGear();
+        sen = new SendableChooser();
         autoCom = new AutoTest();
-                
+        
+        sen.addDefault("Test Auto", new AutoTest());
+        sen.addObject("One Ball Left", new AutoLeft());
+        sen.addObject("One Ball Center", new AutoCenter());
+        sen.addObject("One Ball Right", new AutoRight());
+        SmartDashboard.putData("Autonomous Command ", sen);
+        
         CommandBase.init();
     }
 
     public void autonomousInit(){
-        Global.isPrac = SmartDashboard.getBoolean("Practice Robot? ");
+        autoCom = (Command)sen.getSelected();
+        reset.start();
+        gears.start();
         autoCom.start();
     }
 
@@ -30,6 +45,7 @@ public class Main extends IterativeRobot{
     public void teleopInit(){
         autoCom.cancel();
         comp.start();
+        reset.start();
     }
 
     public void teleopPeriodic(){

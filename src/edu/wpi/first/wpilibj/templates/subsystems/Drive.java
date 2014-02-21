@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+//import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
@@ -16,38 +17,31 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 
 public class Drive extends PIDSubsystem{
-    public static final double P = 0;
+    public static final double P = 0.034;
     public static final double I = 0;
     public static final double D = 0;
-    public static double pulseDistance;
+    public static double pulseDistance = .0918762;//How many inches are displaced per encoder pulse
     
     Encoder lEnc, rEnc;
     RobotDrive drive;
     Solenoid gearSol;
     Talon lTal, rTal;
+    //AnalogChannel prox;
     
     public PIDController pid;
     private PIDOutput output = new PIDOutput(){
         public void pidWrite(double output){
-            drive.tankDrive(-output, output);
+            drive.tankDrive(-output, -output);
         }
     };
     private PIDSource source = new PIDSource(){
         public double pidGet(){
-            return getTravelled();
+            return getRightEnc();
         }
     };
 
     public Drive(){       
         super("Drive", P, I, D);
-        
-        if(Global.isPrac){
-            //pulseDistance = .096132735;
-            pulseDistance = 1;
-        }else{
-            //pulseDistance = .096132735;
-            pulseDistance = 1;
-        }
         
         lTal = new Talon(RobotMap.Left_Talon);
         rTal = new Talon(RobotMap.Right_Talon);
@@ -73,6 +67,9 @@ public class Drive extends PIDSubsystem{
         
         gearSol = new Solenoid(RobotMap.Gear_Solenoid);
         LiveWindow.addActuator("Drive", "Gear Solenoid", gearSol);
+        
+        //prox = new AnalogChannel(RobotMap.Proximity_Sen);
+        //LiveWindow.addSensor("Drive", "Proximity Sensor", prox);
     }
        
     protected void usePIDOutput(double output){}
@@ -85,13 +82,14 @@ public class Drive extends PIDSubsystem{
         }
     }
     
-    public void DriveJoysticks(Joystick lStick, Joystick rStick){
-        drive.tankDrive(lStick, rStick);
+    public void ForceLow(){
+        if(!gearSol.get()){
+            gearSol.set(true);
+        }
     }
     
-    public void Go(int inches){
-        pid.setSetpoint(inches);
-        pid.enable();
+    public void DriveJoysticks(Joystick lStick, Joystick rStick){
+        drive.tankDrive(lStick, rStick);
     }
         
     public void initDefaultCommand(){
@@ -132,16 +130,16 @@ public class Drive extends PIDSubsystem{
         return lTal.get();
     }
     
+    /*public double getProximity(){
+        return prox.getAverageValue();
+    }*/
+    
     public double getRightEnc(){
         return rEnc.getDistance();
     }
     
     public double getRightMotor(){
         return rTal.get();
-    }
-    
-    public double getTravelled(){
-        return (lEnc.getDistance() + rEnc.getDistance()) / 2;
     }
     
     protected double returnPIDInput() {

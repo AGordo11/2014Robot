@@ -26,6 +26,7 @@ public class WhereHot extends CommandBase{
             }
         }catch(TableKeyExistsWithDifferentTypeException ex){
             Global.isRight = true;
+            Global.error = "Camera Failure";
         }
     }
 

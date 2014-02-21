@@ -18,5 +18,7 @@ public class JoystickRotate extends CommandBase{
 
     protected void end(){}
 
-    protected void interrupted(){}
+    protected void interrupted(){
+        in.Rotate(oi.getShooterY());
+    }
 }

@@ -2,20 +2,17 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.Global;
 
-public class RunIntake extends CommandBase{
+public class StopEverything extends CommandBase{
     
-    public RunIntake(){
-        requires(in);
+    public StopEverything(){
+        requires(sh);
     }
 
     protected void initialize(){
-        if(!Global.isRun){
-            Global.isRun = true;
-            in.Roller(1.0);
-        }else{
-            Global.isRun = false;
-            in.Roller(0);
-        }
+        sh.Stop();
+        in.Roller(0);
+        in.Rotate(0);
+        Global.isRun = false;
     }
 
     protected void execute(){}
