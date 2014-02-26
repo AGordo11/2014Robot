@@ -19,7 +19,7 @@ public class EncoderTest extends CommandBase{
     protected void execute(){}
 
     protected boolean isFinished(){
-        if(dr.getRightEnc() >= 100 || timer.get() >= 5){//When the robot goes 1000(?) inches, stop it
+        if(dr.getRightEnc() >= 100 || timer.get() >= 5){//When the robot goes 100 inches, stop it
             dr.Stop();
             timer.stop();
             timer.reset();

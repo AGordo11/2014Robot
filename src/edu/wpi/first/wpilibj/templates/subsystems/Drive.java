@@ -26,7 +26,6 @@ public class Drive extends PIDSubsystem{
     RobotDrive drive;
     Solenoid gearSol;
     Talon lTal, rTal;
-    //AnalogChannel prox;
     
     public PIDController pid;
     private PIDOutput output = new PIDOutput(){
@@ -67,9 +66,6 @@ public class Drive extends PIDSubsystem{
         
         gearSol = new Solenoid(RobotMap.Gear_Solenoid);
         LiveWindow.addActuator("Drive", "Gear Solenoid", gearSol);
-        
-        //prox = new AnalogChannel(RobotMap.Proximity_Sen);
-        //LiveWindow.addSensor("Drive", "Proximity Sensor", prox);
     }
        
     protected void usePIDOutput(double output){}
@@ -129,11 +125,7 @@ public class Drive extends PIDSubsystem{
     public double getLeftMotor(){
         return lTal.get();
     }
-    
-    /*public double getProximity(){
-        return prox.getAverageValue();
-    }*/
-    
+
     public double getRightEnc(){
         return rEnc.getDistance();
     }

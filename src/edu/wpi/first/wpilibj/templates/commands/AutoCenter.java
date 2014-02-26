@@ -10,10 +10,10 @@ public class AutoCenter extends CommandGroup{
         addSequential(new WhereHot());
         addSequential(new GoForward(10));
         addSequential(new Spin());
-        //addSequential(new Shoot());
+        addSequential(new Shoot());
         Global.isRight = !Global.isRight;
         addSequential(new Spin());
         addParallel(new GoForward(40));
-        //addSequential(new Retract());
+        addSequential(new Retract());
     }
 }

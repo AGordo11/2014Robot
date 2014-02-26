@@ -9,6 +9,7 @@ public class StopEverything extends CommandBase{
     }
 
     protected void initialize(){
+        dr.Stop();
         sh.Stop();
         in.Roller(0);
         in.Rotate(0);

@@ -25,7 +25,6 @@ public class SDUpdate extends CommandBase{
         SmartDashboard.putBoolean("High Gear ", dr.highGear());
         SmartDashboard.putBoolean("Is Right? ", Global.isRight);
         SmartDashboard.putBoolean("Shooter Sensor ", sh.getSensor());
-        //SmartDashboard.putBoolean("Stopper ", sh.getStopper());
         SmartDashboard.putString("Error ", Global.error);
         SmartDashboard.putString("Message ", Global.msg);
     }

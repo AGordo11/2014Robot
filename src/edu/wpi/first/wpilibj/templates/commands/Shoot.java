@@ -12,13 +12,12 @@ public class Shoot extends CommandBase{
     }
 
     protected void initialize(){
-        /*if(Global.isRetract){
+        if(Global.isRetract){
             sh.Shoot();
             Global.msg = "Shooting...";
         }else{
-            sh.Stop();
             Global.error = "Not retracted";
-        }*/
+        }
         timer.start();
         sh.Shoot();
     }
@@ -26,19 +25,14 @@ public class Shoot extends CommandBase{
     protected void execute(){}
 
     protected boolean isFinished(){
-        /*if(sh.getSensor()){
-            return false;
-        }else{
+        if(!sh.getSensor() || timer.get() >= 2){
             sh.Stop();
             Global.isRetract = false;
-            return true;
-        }*/
-        if(timer.get() >= 1){
-            sh.Stop();
-            Global.isRetract = false;
+            timer.stop();
+            timer.reset();
             return true;
         }else{
-            return false;
+            return true;
         }
     }
 
@@ -46,5 +40,7 @@ public class Shoot extends CommandBase{
 
     protected void interrupted(){
         sh.Stop();
+        timer.stop();
+        timer.reset();
     }
 }

@@ -5,10 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.templates.Global;
 
 public class AutoRight extends CommandGroup{
-    Timer timer;
+    Timer timer = new Timer();
     
     public AutoRight(){
-        timer = new Timer();
         timer.start();
         
         addSequential(new LowGear());
@@ -16,9 +15,9 @@ public class AutoRight extends CommandGroup{
         while(!Global.isRight && timer.get() <= 5){
             Global.msg = "Waiting";
         }
-        //addSequential(new Shoot());
+        addSequential(new Shoot());
         addParallel(new GoForward(50));
-        //addSequential(new Retract());
+        addSequential(new Retract());
         
         timer.stop();
         timer.reset();

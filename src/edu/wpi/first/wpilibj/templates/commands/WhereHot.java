@@ -13,7 +13,7 @@ public class WhereHot extends CommandBase{
     }
 
     protected void initialize(){
-        final NumberArray cross = new NumberArray();
+        NumberArray cross = new NumberArray();
         try{
             nt = NetworkTable.getTable("SmartDashboard");
             nt.retrieveValue("CROSSHAIR_COORDINATES", cross);

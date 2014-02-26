@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.*;
-//175 hours logged
+
 public class OI{
     Joystick lStick, rStick, sStick;
     JoystickButton lTrig, lBut2,
