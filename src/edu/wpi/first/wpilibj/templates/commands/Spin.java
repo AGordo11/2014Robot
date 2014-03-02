@@ -17,14 +17,14 @@ public class Spin extends CommandBase{
 
     protected void execute(){
         if(Global.isRight){
-            dr.TankDrive(-1.0, -1.0);
+            dr.TankDrive(-0.6, 0.6);
         }else{
-            dr.TankDrive(1.0, 1.0);
+            dr.TankDrive(0.6, -0.6);
         }
     }
 
     protected boolean isFinished(){
-        if(timer.get() >= 0.1){
+        if(timer.get() >= 0.2){
             timer.stop();
             timer.reset();
             dr.Stop();

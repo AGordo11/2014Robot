@@ -12,6 +12,8 @@ public class AutoRight extends CommandGroup{
         
         addSequential(new LowGear());
         addSequential(new WhereHot());
+        addParallel(new GoForward(75));
+        addSequential(new Retract());
         while(!Global.isRight && timer.get() <= 5){
             Global.msg = "Waiting";
         }

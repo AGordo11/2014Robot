@@ -8,7 +8,8 @@ public class AutoCenter extends CommandGroup{
     public AutoCenter(){
         addSequential(new LowGear());
         addSequential(new WhereHot());
-        addSequential(new GoForward(10));
+        addParallel(new Retract());
+        addSequential(new GoForward(50));
         addSequential(new Spin());
         addSequential(new Shoot());
         Global.isRight = !Global.isRight;

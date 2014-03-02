@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.JoystickRotate;
 
 public class Intake extends PIDSubsystem{
-    public static final double P = 0.310;
+    public static final double P = 0.250;
     public static final double I = 0;
-    public static final double D = 0;
+    public static final double D = 0.015;
     
     AnalogPotentiometer pot;
     Talon rTal, roTal;

@@ -1,30 +1,31 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.Global;
-import edu.wpi.first.wpilibj.Timer;
 
 public class Retract extends CommandBase{
-    Timer timer = new Timer();
     
     public Retract(){
         requires(sh);
     }
 
     protected void initialize(){
-        timer.start();
         if(!Global.isRetract){
             sh.Shoot();
+            Global.msg = "Retracting...";
+            Global.error = "";
+        }else{
+            Global.msg = "See error";
+            Global.error = "Already retracted";
         }
     }
 
     protected void execute(){}
 
     protected boolean isFinished(){
-        if(sh.getSensor() || timer.get() >= 5){
+        if(Global.isRetract){
             sh.Stop();
-            Global.isRetract = true;
-            timer.stop();
-            timer.reset();
+            Global.msg = "Retracted";
+            Global.error = "";
             return true;
         }else{
             return false;
@@ -33,13 +34,11 @@ public class Retract extends CommandBase{
 
     protected void end(){
         sh.Stop();
-        timer.stop();
-        timer.reset();
     }
 
     protected void interrupted(){
+        Global.msg = "See error";
+        Global.error = "Retraction interrupted";
         sh.Stop();
-        timer.stop();
-        timer.reset();
     }
 }

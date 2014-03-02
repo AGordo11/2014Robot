@@ -12,6 +12,9 @@ public class SDUpdate extends CommandBase{
     protected void initialize(){}
 
     protected void execute(){
+        if(sh.getSensor()){
+            Global.isRetract = true;
+        }
         SmartDashboard.putNumber("Shooter Y ", oi.getShooterY());
         SmartDashboard.putNumber("Left Output ", -dr.getLeftMotor());
         SmartDashboard.putNumber("Right Output ", dr.getRightMotor());
@@ -24,6 +27,7 @@ public class SDUpdate extends CommandBase{
         SmartDashboard.putNumber("Crosshair Y ", Global.crossY);
         SmartDashboard.putBoolean("High Gear ", dr.highGear());
         SmartDashboard.putBoolean("Is Right? ", Global.isRight);
+        SmartDashboard.putBoolean("Is Retracted? ", Global.isRetract);
         SmartDashboard.putBoolean("Shooter Sensor ", sh.getSensor());
         SmartDashboard.putString("Error ", Global.error);
         SmartDashboard.putString("Message ", Global.msg);

@@ -34,7 +34,7 @@ public class OI{
         sTrig.whenPressed(new Shoot());
         sBut2.whileHeld(new Retract());
         sBut3.whenPressed(new RunSpittake());
-        sBut4.whenPressed(new StopEverything());
+        sBut4.whenPressed(new RetractChange());
         sBut5.whenPressed(new RunIntake());
         sBut6.whenPressed(new StopEverything());
     }

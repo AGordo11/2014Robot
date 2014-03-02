@@ -1,6 +1,5 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-//import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
@@ -12,19 +11,18 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.templates.Global;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 
 public class Drive extends PIDSubsystem{
-    public static final double P = 0.034;
+    public static final double P = 0.031;
     public static final double I = 0;
     public static final double D = 0;
     public static double pulseDistance = .0918762;//How many inches are displaced per encoder pulse
     
     Encoder lEnc, rEnc;
     RobotDrive drive;
-    Solenoid gearSol;
+    Solenoid gSol;
     Talon lTal, rTal;
     
     public PIDController pid;
@@ -64,23 +62,23 @@ public class Drive extends PIDSubsystem{
         pid = new PIDController(P, I, D, source, output);
         LiveWindow.addActuator("Drive", "PID", pid);
         
-        gearSol = new Solenoid(RobotMap.Gear_Solenoid);
-        LiveWindow.addActuator("Drive", "Gear Solenoid", gearSol);
+        gSol = new Solenoid(RobotMap.Gear_Solenoid);
+        LiveWindow.addActuator("Drive", "Gear Solenoid", gSol);
     }
        
     protected void usePIDOutput(double output){}
     
     public void ChangeGears(){
         if(!highGear()){
-            gearSol.set(false);//If gear solenoid is low, set to false/high gear
+            gSol.set(false);//If gear solenoid is low, set to false/high gear
         }else{
-            gearSol.set(true);//If gear solenoid is high, set to true/low gear
+            gSol.set(true);//If gear solenoid is high, set to true/low gear
         }
     }
     
     public void ForceLow(){
-        if(!gearSol.get()){
-            gearSol.set(true);
+        if(!gSol.get()){
+            gSol.set(true);
         }
     }
     
@@ -115,7 +113,7 @@ public class Drive extends PIDSubsystem{
     }
     
     public boolean highGear(){//Returns high as true, even though .get() returns as false
-        return !gearSol.get();
+        return !gSol.get();
     }
         
     public double getLeftEnc(){
