@@ -5,10 +5,12 @@ import edu.wpi.first.wpilibj.templates.Global;
 
 public class Spin extends CommandBase{
     Timer timer;
+    boolean right;
     
-    public Spin(){
+    public Spin(boolean rig){
         requires(dr);
         timer = new Timer();
+        right = rig;
     }
 
     protected void initialize(){
@@ -16,10 +18,10 @@ public class Spin extends CommandBase{
     }
 
     protected void execute(){
-        if(Global.isRight){
-            dr.TankDrive(-0.6, 0.6);
+        if(right){
+            dr.TankDrive(-0.6, 0.6);//Spins right
         }else{
-            dr.TankDrive(0.6, -0.6);
+            dr.TankDrive(0.6, -0.6);//Spins left
         }
     }
 

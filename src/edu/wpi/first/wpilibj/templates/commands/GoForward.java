@@ -20,21 +20,29 @@ public class GoForward extends CommandBase{
         dr.pid.enable();
     }
 
-    protected void execute(){
-        if(inches <= 0){
-            inches = -inches;
-        }
-    }
+    protected void execute(){}
 
     protected boolean isFinished(){
-        if(dr.getRightEnc() - inches > -3 || timer.get() >= 5){
-            timer.stop();
-            timer.reset();
-            dr.pid.disable();
-            dr.Stop();
-            return true;
+        if(inches >= 0){
+            if(dr.getRightEnc() - inches >= -(inches/10) || timer.get() >= 2){
+                timer.stop();
+                timer.reset();
+                dr.pid.disable();
+                dr.Stop();
+                return true;
+            }else{
+                return false;
+            }
         }else{
-            return false;
+            if(dr.getRightEnc() - inches <= -(inches/10) || timer.get() >= 2){
+                timer.stop();
+                timer.reset();
+                dr.pid.disable();
+                dr.Stop();
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 

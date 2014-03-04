@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.*;
+import edu.wpi.first.wpilibj.templates.Global;
 
 public class Main extends IterativeRobot{
     Command autoCom;
@@ -24,10 +25,9 @@ public class Main extends IterativeRobot{
         
         sen.addDefault("Test Auto", new AutoTest());
         sen.addObject("One Ball Left", new AutoLeft());
-        sen.addObject("One Ball Center", new AutoCenter());
         sen.addObject("One Ball Right", new AutoRight());
         SmartDashboard.putData("Autonomous Command ", sen);
-        
+
         CommandBase.init();
     }
 

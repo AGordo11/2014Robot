@@ -23,14 +23,23 @@ public class SDUpdate extends CommandBase{
         SmartDashboard.putNumber("Roller Output ", in.getRoller());
         SmartDashboard.putNumber("Rotator Output ", in.getRot());
         SmartDashboard.putNumber("Rotator Position ", in.getPot());
-        SmartDashboard.putNumber("Crosshair X ", Global.crossX);
-        SmartDashboard.putNumber("Crosshair Y ", Global.crossY);
         SmartDashboard.putBoolean("High Gear ", dr.highGear());
-        SmartDashboard.putBoolean("Is Right? ", Global.isRight);
+        SmartDashboard.putBoolean("Is Hot? ", Global.isHot);
         SmartDashboard.putBoolean("Is Retracted? ", Global.isRetract);
         SmartDashboard.putBoolean("Shooter Sensor ", sh.getSensor());
         SmartDashboard.putString("Error ", Global.error);
         SmartDashboard.putString("Message ", Global.msg);
+        try{
+            Global.boundX = Double.parseDouble(SmartDashboard.getString("BOUNDX"));
+            Global.boundX2 = Double.parseDouble(SmartDashboard.getString("BOUNDX2"));
+            Global.boundY = Double.parseDouble(SmartDashboard.getString("BOUNDY"));
+            Global.boundY2 = Double.parseDouble(SmartDashboard.getString("BOUNDY2"));
+        }catch(NumberFormatException ex){
+            Global.boundX = 0;
+            Global.boundX2 = 0;
+            Global.boundY = 0;
+            Global.boundY2 = 0;
+        }
     }
 
     protected boolean isFinished(){
