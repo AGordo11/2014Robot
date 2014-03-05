@@ -29,17 +29,11 @@ public class SDUpdate extends CommandBase{
         SmartDashboard.putBoolean("Shooter Sensor ", sh.getSensor());
         SmartDashboard.putString("Error ", Global.error);
         SmartDashboard.putString("Message ", Global.msg);
-        try{
-            Global.boundX = Double.parseDouble(SmartDashboard.getString("BOUNDX"));
-            Global.boundX2 = Double.parseDouble(SmartDashboard.getString("BOUNDX2"));
-            Global.boundY = Double.parseDouble(SmartDashboard.getString("BOUNDY"));
-            Global.boundY2 = Double.parseDouble(SmartDashboard.getString("BOUNDY2"));
-        }catch(NumberFormatException ex){
-            Global.boundX = 0;
-            Global.boundX2 = 0;
-            Global.boundY = 0;
-            Global.boundY2 = 0;
-        }
+        
+        SmartDashboard.putNumber("Bound X ", Global.boundX);
+        SmartDashboard.putNumber("Bound X2 ", Global.boundX2);
+        SmartDashboard.putNumber("Bound Y", Global.boundY);
+        SmartDashboard.putNumber("Bound Y2 ", Global.boundY2);
     }
 
     protected boolean isFinished(){

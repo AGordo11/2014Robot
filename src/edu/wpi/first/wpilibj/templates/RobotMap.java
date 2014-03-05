@@ -26,6 +26,8 @@ public class RobotMap{
     
     //Solenoids
     public static final int Gear_Solenoid = 1;
+    public static final int Ears_SolenoidA = 3;
+    public static final int Ears_SolenoidB = 4;
     
     //Analog Inputs
     public static final int Rotator_Pot = 1;

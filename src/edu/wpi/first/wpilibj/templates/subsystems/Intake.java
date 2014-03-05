@@ -1,9 +1,11 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.templates.Global;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.JoystickRotate;
 
@@ -13,6 +15,7 @@ public class Intake extends PIDSubsystem{
     public static final double D = 0.015;
     
     AnalogPotentiometer pot;
+    DoubleSolenoid ears;
     Talon rTal, roTal;
     
     public void initDefaultCommand(){
@@ -30,7 +33,10 @@ public class Intake extends PIDSubsystem{
         LiveWindow.addActuator("Intake", "Rotator Motor", roTal);
         
         pot = new AnalogPotentiometer(RobotMap.Rotator_Pot);
-        LiveWindow.addSensor("Intake", "Rotator Potentiometer", pot);     
+        LiveWindow.addSensor("Intake", "Rotator Potentiometer", pot);
+        
+        ears = new DoubleSolenoid(RobotMap.Ears_SolenoidA, RobotMap.Ears_SolenoidB);
+        LiveWindow.addActuator("Intake", "Ears", ears);
     }
     
     public void Rotate(double output){
@@ -39,6 +45,16 @@ public class Intake extends PIDSubsystem{
     
     public void Roller(double output){
         rTal.set(output);
+    }
+    
+    public void Ears(){
+        if(ears.get() == DoubleSolenoid.Value.kForward){
+            ears.set(DoubleSolenoid.Value.kReverse);
+            Global.msg = "kReverse";
+        }else{
+            ears.set(DoubleSolenoid.Value.kForward); 
+            Global.msg = "kForward/kOff";
+        }
     }
     
     public double getRoller(){

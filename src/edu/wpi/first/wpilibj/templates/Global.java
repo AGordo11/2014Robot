@@ -11,6 +11,7 @@ public class Global{
     public static double boundY;
     public static double boundX2;
     public static double boundY2;
+    public static int autoPick;
     public static String error = "";
     public static String msg = "Don't Panic!";
 }
