@@ -8,9 +8,9 @@ public class AutoOneNot extends CommandGroup{
     
     public AutoOneNot(){
         addParallel(new Ears());
-        addParallel(new Retract());
-        addSequential(new GoForward(25));
+        addSequential(new Retract());
         addSequential(new WaitForChildren());
+        addSequential(new GoForward(30));
         addSequential(new WaitCommand(6.0));
         addSequential(new Shoot());
         addSequential(new WaitCommand(0.5));

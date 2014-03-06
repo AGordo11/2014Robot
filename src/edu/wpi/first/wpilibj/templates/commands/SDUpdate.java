@@ -34,6 +34,7 @@ public class SDUpdate extends CommandBase{
         SmartDashboard.putNumber("Bound X2 ", Global.boundX2);
         SmartDashboard.putNumber("Bound Y", Global.boundY);
         SmartDashboard.putNumber("Bound Y2 ", Global.boundY2);
+        SmartDashboard.putNumber("Auto Pick ", Global.autoPick);
     }
 
     protected boolean isFinished(){

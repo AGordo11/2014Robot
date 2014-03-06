@@ -8,9 +8,9 @@ public class AutoOneHot extends CommandGroup{
     
     public AutoOneHot(){
         addParallel(new Ears());
-        addParallel(new Retract());
-        addSequential(new GoForward(25));
+        addSequential(new Retract());
         addSequential(new WaitForChildren());
+        addSequential(new GoForward(30));
         addSequential(new WaitCommand(1.0));
         addSequential(new Shoot());
         addSequential(new WaitCommand(0.5));

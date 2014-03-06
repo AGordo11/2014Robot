@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.templates.Global;
 
 public class Spin extends CommandBase{
     Timer timer;
