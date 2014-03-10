@@ -2,9 +2,9 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class CWhereHot extends CommandGroup{
+public class AutoStart extends CommandGroup{
     
-    public CWhereHot(){
+    public AutoStart(){
         addSequential(new WhereHot());
     }
 }

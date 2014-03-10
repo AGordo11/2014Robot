@@ -10,8 +10,8 @@ public class AutoOneNot extends CommandGroup{
         addParallel(new Ears());
         addSequential(new Retract());
         addSequential(new WaitForChildren());
-        addSequential(new GoForward(30));
-        addSequential(new WaitCommand(6.0));
+        addSequential(new GoForward(75));
+        addSequential(new WaitCommand(3.5));
         addSequential(new Shoot());
         addSequential(new WaitCommand(0.5));
         addParallel(new Retract());

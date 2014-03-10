@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 
 public class Drive extends PIDSubsystem{
-    public static final double P = 0.045;
+    public static final double P = 0.034;
     public static final double I = 0;
     public static final double D = 0;
     public static double pulseDistance = .0918762;//How many inches are displaced per encoder pulse

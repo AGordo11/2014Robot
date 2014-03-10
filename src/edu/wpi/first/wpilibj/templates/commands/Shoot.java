@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.Global;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.templates.Global;
 
 public class Shoot extends CommandBase{
     Timer timer = new Timer();
@@ -13,6 +13,7 @@ public class Shoot extends CommandBase{
     protected void initialize(){
         timer.start();
         if(Global.isRetract){
+            in.Ears();
             sh.Shoot();
             Global.msg = "Shooting...";
             Global.error = "";
@@ -20,13 +21,13 @@ public class Shoot extends CommandBase{
             Global.msg = "See error";
             Global.error = "Not retracted";
         }
-        sh.Shoot();
     }
 
     protected void execute(){}
 
     protected boolean isFinished(){
         if(timer.get() >= 1){
+            in.Ears();
             sh.Stop();
             Global.msg = "Finished shooting";
             Global.error = "";

@@ -8,28 +8,23 @@ public class WhereHot extends CommandBase{
     public WhereHot(){}
 
     protected void initialize(){
-        Global.isHot = true;
         try{
             Global.boundX = SmartDashboard.getNumber("BOUNDX", 4.0);
             Global.boundX2 = SmartDashboard.getNumber("BOUNDX2", 3.0);
             Global.boundY = SmartDashboard.getNumber("BOUNDY", 2.0);
             Global.boundY2 = SmartDashboard.getNumber("BOUNDY2", 1.0);
-        }catch(Exception ex){
-            ex.printStackTrace();
-            Global.boundX = 5;
-        }   
-        if(Global.boundX2 - Global.boundX >= 100 && Global.boundY >= 100 && Global.boundY2 - Global.boundY >= 50){
+        }catch(Exception ex){}
+        
+        if(Global.boundX2 - Global.boundX >= 100 && Global.boundY >= 40 && Global.boundY2 - Global.boundY >= 25){
             Global.isHot = true;
         }else{
             Global.isHot = false;
         }
-        Global.isHot = true;
     }
 
     protected void execute(){}
 
     protected boolean isFinished(){
-        Global.isHot = true;
         return true;
     }
 
