@@ -23,7 +23,7 @@ public class AutoTwoLNot extends CommandGroup{
         addParallel(new Retract());
         addSequential(new GoForward(65));*/
         addSequential(new RunIntake());
-        //addParallel(new Retract());
+        addParallel(new Retract());
         addSequential(new Rotate(2));
         addSequential(new Ears());
         addSequential(new GoForward(75));
