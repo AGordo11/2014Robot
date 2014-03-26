@@ -1,15 +1,12 @@
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.*;
-import edu.wpi.first.wpilibj.templates.Global;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Timer;
 
 public class Main extends IterativeRobot{
     Command autoCom, comp, reset, strt;
@@ -42,16 +39,14 @@ public class Main extends IterativeRobot{
             }
         }else if(ds.getDigitalIn(3)){
             if(Global.isHot){
-                autoCom = new AutoTwoRHot();
-            }else{
-                autoCom = new AutoTwoRNot();
-            }
-        }else if(ds.getDigitalIn(4)){
-            if(Global.isHot){
                 autoCom = new AutoThreeHot();
             }else{
                 autoCom = new AutoThreeNot();
             }
+        }else if(ds.getDigitalIn(7)){
+            autoCom = new AutoNone();
+        }else if(ds.getDigitalIn(8)){
+            autoCom = new WhereHot();
         }else{
             autoCom = new AutoOneHot();
         }

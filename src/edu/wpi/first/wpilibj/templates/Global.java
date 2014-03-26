@@ -1,9 +1,9 @@
 package edu.wpi.first.wpilibj.templates;
 
 public class Global{
-    public static final double rotIn = 4.200;//The values for the different rotator positions from 0.001 to 5.001
-    public static final double rotUp = 2.100;
-    public static final double rotOut = 0.900;
+    public static final double rotIn = 4.700;//The values for the different rotator positions from 0.001 to 5.001
+    public static final double rotUp = 2.950;
+    public static final double rotOut = 1.600;
     public static boolean isHot = false;//Is the target side hot or not?
     public static boolean isRun = false;//Are the rollers running?
     public static boolean isRetract = false;//Is the catapult retracted?

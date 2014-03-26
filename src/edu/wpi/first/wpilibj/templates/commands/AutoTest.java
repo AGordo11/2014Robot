@@ -4,5 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutoTest extends CommandGroup{
     
-    public AutoTest(){}
+    public AutoTest(){
+        addSequential(new WhereHot());
+    }
 }

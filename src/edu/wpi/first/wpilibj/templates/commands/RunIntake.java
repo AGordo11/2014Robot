@@ -11,9 +11,11 @@ public class RunIntake extends CommandBase{
     protected void initialize(){
         if(!Global.isRun){
             Global.isRun = true;
+            in.Ears();
             in.Roller(1.0);
         }else{
             Global.isRun = false;
+            in.Ears();
             in.Roller(0);
         }
     }

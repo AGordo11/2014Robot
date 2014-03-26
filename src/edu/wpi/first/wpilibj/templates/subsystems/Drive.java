@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
@@ -20,9 +21,10 @@ public class Drive extends PIDSubsystem{
     public static final double D = 0;
     public static double pulseDistance = .0918762;//How many inches are displaced per encoder pulse
     
+    AnalogChannel laser;
     Encoder lEnc, rEnc;
     RobotDrive drive;
-    Solenoid gSol;
+    Solenoid gSol, laSol;
     Talon lTal, rTal;
     
     public PIDController pid;
@@ -62,8 +64,15 @@ public class Drive extends PIDSubsystem{
         pid = new PIDController(P, I, D, source, output);
         LiveWindow.addActuator("Drive", "PID", pid);
         
+        laser = new AnalogChannel(RobotMap.Laser_Analog);
+        LiveWindow.addActuator("Drive", "Laser Analog", laser);
+        
         gSol = new Solenoid(RobotMap.Gear_Solenoid);
+        laSol = new Solenoid(RobotMap.Laser_Solenoid);
         LiveWindow.addActuator("Drive", "Gear Solenoid", gSol);
+        LiveWindow.addActuator("Drive", "Laser Solenoid", laSol);
+        
+        laSol.set(true);
     }
        
     protected void usePIDOutput(double output){}
@@ -130,6 +139,10 @@ public class Drive extends PIDSubsystem{
     
     public double getRightMotor(){
         return rTal.get();
+    }
+    
+    public double getLaser(){
+        return laser.getAverageVoltage();
     }
     
     protected double returnPIDInput() {
