@@ -37,12 +37,6 @@ public class Main extends IterativeRobot{
             }else{
                 autoCom = new AutoTwoLNot();
             }
-        }else if(ds.getDigitalIn(3)){
-            if(Global.isHot){
-                autoCom = new AutoThreeHot();
-            }else{
-                autoCom = new AutoThreeNot();
-            }
         }else if(ds.getDigitalIn(7)){
             autoCom = new AutoNone();
         }else if(ds.getDigitalIn(8)){
