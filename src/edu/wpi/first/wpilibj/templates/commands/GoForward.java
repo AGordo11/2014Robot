@@ -25,20 +25,12 @@ public class GoForward extends CommandBase{
     protected boolean isFinished(){
         if(inches >= 0){
             if(dr.getRightEnc() - inches >= -(inches/10) || timer.get() >= 1.5){
-                timer.stop();
-                timer.reset();
-                dr.pid.disable();
-                dr.Stop();
                 return true;
             }else{
                 return false;
             }
         }else{
             if(dr.getRightEnc() - inches <= -(inches/10) || timer.get() >= 1.5){
-                timer.stop();
-                timer.reset();
-                dr.pid.disable();
-                dr.Stop();
                 return true;
             }else{
                 return false;
@@ -46,7 +38,12 @@ public class GoForward extends CommandBase{
         }
     }
 
-    protected void end(){}
+    protected void end(){
+        timer.stop();
+        timer.reset();
+        dr.pid.disable();
+        dr.Stop();    
+    }
     
     protected void interrupted(){
         dr.Stop();

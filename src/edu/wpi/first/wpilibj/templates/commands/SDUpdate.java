@@ -15,14 +15,12 @@ public class SDUpdate extends CommandBase{
         if(sh.getSensor()){
             Global.isRetract = true;
         }
-        //SmartDashboard.putNumber("Shooter Y ", oi.getShooterY());
+        SmartDashboard.putNumber("Shooter Y ", oi.getShooterY());
         SmartDashboard.putNumber("Left Output ", -dr.getLeftMotor());
         SmartDashboard.putNumber("Right Output ", dr.getRightMotor());
         SmartDashboard.putNumber("Left Encoder ", dr.getLeftEnc());
         SmartDashboard.putNumber("Right Encoder ", dr.getRightEnc());
         SmartDashboard.putNumber("Roller Output ", in.getRoller());
-        //SmartDashboard.putNumber("Rotator Output ", in.getRot());
-        SmartDashboard.putNumber("Rotator Position ", in.getPot());
         SmartDashboard.putNumber("Laser Distance ", dr.getLaser());
         SmartDashboard.putBoolean("High Gear ", dr.highGear());
         SmartDashboard.putBoolean("Is Hot? ", Global.isHot);

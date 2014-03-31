@@ -9,7 +9,11 @@ public class JoystickRotate extends CommandBase{
     protected void initialize(){}
 
     protected void execute(){
-        in.Rotate(oi.getShooterY());
+        if(oi.getShooterY() >= 0.5){
+            
+        }else if(oi.getShooterY() <= -0.5){
+        
+        }
     }
 
     protected boolean isFinished(){
@@ -18,7 +22,5 @@ public class JoystickRotate extends CommandBase{
 
     protected void end(){}
 
-    protected void interrupted(){
-        in.Rotate(oi.getShooterY());
-    }
+    protected void interrupted(){}
 }

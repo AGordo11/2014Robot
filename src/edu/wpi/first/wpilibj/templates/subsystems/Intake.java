@@ -28,12 +28,7 @@ public class Intake extends PIDSubsystem{
         LiveWindow.addActuator("Intake", "PID", getPIDController());
         
         rTal = new Talon(RobotMap.Roller_Talon);
-        roTal = new Talon(RobotMap.Rotator_Talon);
         LiveWindow.addActuator("Intake", "Roller Motor", rTal);
-        LiveWindow.addActuator("Intake", "Rotator Motor", roTal);
-        
-        pot = new AnalogPotentiometer(RobotMap.Rotator_Pot);
-        LiveWindow.addSensor("Intake", "Rotator Potentiometer", pot);
         
         ears = new DoubleSolenoid(RobotMap.Ears_SolenoidA, RobotMap.Ears_SolenoidB);
         LiveWindow.addActuator("Intake", "Ears", ears);
@@ -53,7 +48,7 @@ public class Intake extends PIDSubsystem{
             Global.msg = "kReverse";
         }else{
             ears.set(DoubleSolenoid.Value.kForward); 
-            Global.msg = "kForward/kOff";
+            Global.msg = "kForward";
         }
     }
     

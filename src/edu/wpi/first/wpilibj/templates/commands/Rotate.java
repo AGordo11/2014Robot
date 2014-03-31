@@ -15,13 +15,6 @@ public class Rotate extends CommandBase{
 
     protected void initialize(){
         timer.start();
-        if(position == 0){//Position 0 sets rotator inwards
-            in.setSetpoint(Global.rotIn);
-        }else if(position == 1){//Position 1 sets rotator upwards
-            in.setSetpoint(Global.rotUp);
-        }else if(position == 2){//Position 2 sets rotator outwards
-            in.setSetpoint(Global.rotOut);
-        }
         in.enable();
     }
 

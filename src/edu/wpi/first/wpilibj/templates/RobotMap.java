@@ -10,7 +10,6 @@ public class RobotMap{
     public static final int Left_Talon = 1;
     public static final int Right_Talon = 2;
     public static final int Roller_Talon = 3;
-    public static final int Rotator_Talon = 4;
     public static final int Shooter_Talon = 5;
     
     //Relay Outputs
@@ -28,9 +27,7 @@ public class RobotMap{
     public static final int Gear_Solenoid = 1;
     public static final int Ears_SolenoidA = 2;
     public static final int Ears_SolenoidB = 3;
-    public static final int Laser_Solenoid = 4;
     
     //Analog Inputs
-    public static final int Rotator_Pot = 1;
     public static final int Laser_Analog = 2;
 }

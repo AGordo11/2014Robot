@@ -68,9 +68,7 @@ public class Drive extends PIDSubsystem{
         LiveWindow.addActuator("Drive", "Laser Analog", laser);
         
         gSol = new Solenoid(RobotMap.Gear_Solenoid);
-        laSol = new Solenoid(RobotMap.Laser_Solenoid);
         LiveWindow.addActuator("Drive", "Gear Solenoid", gSol);
-        LiveWindow.addActuator("Drive", "Laser Solenoid", laSol);
         
         laSol.set(true);
     }
