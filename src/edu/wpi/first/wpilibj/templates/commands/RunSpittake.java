@@ -11,10 +11,12 @@ public class RunSpittake extends CommandBase{
     protected void initialize(){
         if(!Global.isRun){
             Global.isRun = true;
-            in.Roller(-1.0);
+            in.RunRollers(-1.0);
+            in.RunUpRollers(-1.0);
         }else{
             Global.isRun = false;
-            in.Roller(0);
+            in.RunRollers(0);
+            in.RunUpRollers(0);
         }
     }
 

@@ -13,7 +13,10 @@ public class Shoot extends CommandBase{
     protected void initialize(){
         timer.start();
         if(Global.isRetract){
-            in.Ears();
+            if(!Global.isRun){
+                Global.isRun = true;
+            }
+            in.OpenIntake(0);
             sh.Shoot();
             Global.msg = "Shooting...";
             Global.error = "";
@@ -26,8 +29,9 @@ public class Shoot extends CommandBase{
     protected void execute(){}
 
     protected boolean isFinished(){
-        if(timer.get() >= 1){
-            in.Ears();
+        if(timer.get() >= 0.5){
+            Global.isRun = false;
+            in.OpenIntake(0);
             sh.Stop();
             Global.msg = "Finished shooting";
             Global.error = "";

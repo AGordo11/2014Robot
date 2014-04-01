@@ -3,72 +3,88 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.Global;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.JoystickRotate;
+import edu.wpi.first.wpilibj.Timer;
 
-public class Intake extends PIDSubsystem{
-    public static final double P = 0.250;
-    public static final double I = 0;
-    public static final double D = 0.015;
-    
-    AnalogPotentiometer pot;
-    DoubleSolenoid ears;
-    Talon rTal, roTal;
-    
-    public void initDefaultCommand(){
-        setDefaultCommand(new JoystickRotate());
-    }
+public class Intake extends Subsystem{
+    Timer timer;
+    DoubleSolenoid ears, rollers;
+    Talon rTal, uTal;
+
+    public void initDefaultCommand(){}
 
     public Intake(){
-        super("Intake", P, I, D);
-        getPIDController().setContinuous(false);
-        LiveWindow.addActuator("Intake", "PID", getPIDController());
+        timer = new Timer();
         
         rTal = new Talon(RobotMap.Roller_Talon);
-        LiveWindow.addActuator("Intake", "Roller Motor", rTal);
+        uTal = new Talon(RobotMap.Up_Roller_Talon);
         
         ears = new DoubleSolenoid(RobotMap.Ears_SolenoidA, RobotMap.Ears_SolenoidB);
-        LiveWindow.addActuator("Intake", "Ears", ears);
+        rollers = new DoubleSolenoid(RobotMap.Intake_SolenoidA, RobotMap.Intake_SolenoidB);
     }
     
-    public void Rotate(double output){
-        roTal.set(output);
-    }
-    
-    public void Roller(double output){
-        rTal.set(output);
-    }
-    
-    public void Ears(){
-        if(ears.get() == DoubleSolenoid.Value.kForward){
-            ears.set(DoubleSolenoid.Value.kReverse);
-            Global.msg = "kReverse";
+    public void ActEars(){
+        if(!Global.isRun){
+            ears.set(DoubleSolenoid.Value.kForward);
+            Global.isRun = true;
         }else{
-            ears.set(DoubleSolenoid.Value.kForward); 
-            Global.msg = "kForward";
+            ears.set(DoubleSolenoid.Value.kReverse);
+            Global.isRun = false;
         }
     }
     
-    public double getRoller(){
+    public void ActRollers(){
+        if(!Global.isRun){
+            rollers.set(DoubleSolenoid.Value.kForward);
+            Global.isRun = true;
+        }else{
+            rollers.set(DoubleSolenoid.Value.kReverse);
+            Global.isRun = false;
+        }
+    }
+    
+    public void OpenIntake(double output){
+        uTal.set(output);
+        if(Global.isRun){
+            ears.set(DoubleSolenoid.Value.kForward);
+            rollers.set(DoubleSolenoid.Value.kForward);
+        }else{
+            ears.set(DoubleSolenoid.Value.kReverse);
+            rollers.set(DoubleSolenoid.Value.kReverse);
+        }
+    }
+    
+    public void RunRollers(double output){
+        rTal.set(output);
+    }
+    
+    public void RunUpRollers(double output){
+        uTal.set(output);
+    }
+    
+    public void RunIntake(double output){
+        rTal.set(output);
+        uTal.set(output);
+        if(Global.isRun){
+            rollers.set(DoubleSolenoid.Value.kForward);
+        }else{
+            rollers.set(DoubleSolenoid.Value.kReverse);
+            timer.start();
+            while(timer.get() <= 1.0){
+                uTal.set(1.0);
+            }
+            uTal.set(0);
+        }
+    }
+    
+    public double getUpRollers(){
+        return uTal.get();
+    }
+    
+    public double getRollers(){
         return rTal.get();
-    }
-    
-    public double getRot(){
-        return roTal.get();
-    }
-    
-    public double getPot(){
-        return pot.pidGet();
-    }
-    
-    protected void usePIDOutput(double output){
-        roTal.set(output);
-    }
-    
-    protected double returnPIDInput(){
-        return pot.pidGet();
     }
 }

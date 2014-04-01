@@ -2,19 +2,19 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.Global;
 
-public class RunIntake extends CommandBase{
+public class OpenIntake extends CommandBase {
     
-    public RunIntake(){
+    public OpenIntake(){
         requires(in);
     }
 
     protected void initialize(){
         if(!Global.isRun){
             Global.isRun = true;
-            in.RunIntake(1.0);
+            in.OpenIntake(1.0);
         }else{
             Global.isRun = false;
-            in.RunIntake(0);
+            in.OpenIntake(0);
         }
     }
 

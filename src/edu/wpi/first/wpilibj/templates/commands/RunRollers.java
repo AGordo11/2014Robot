@@ -2,19 +2,17 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.Global;
 
-public class RunIntake extends CommandBase{
+public class RunRollers extends CommandBase{
     
-    public RunIntake(){
-        requires(in);
-    }
-
+    public RunRollers(){}
+    
     protected void initialize(){
         if(!Global.isRun){
+            in.RunRollers(1.0);
             Global.isRun = true;
-            in.RunIntake(1.0);
         }else{
+            in.RunRollers(0);
             Global.isRun = false;
-            in.RunIntake(0);
         }
     }
 

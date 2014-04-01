@@ -44,8 +44,6 @@ public class Drive extends PIDSubsystem{
         
         lTal = new Talon(RobotMap.Left_Talon);
         rTal = new Talon(RobotMap.Right_Talon);
-        LiveWindow.addActuator("Drive", "Left Motor", lTal);
-        LiveWindow.addActuator("Drive", "Right Motor", rTal);
         
         lEnc = new Encoder(RobotMap.Left_EncoderA, RobotMap.Left_EncoderB, false, CounterBase.EncodingType.k4X);
         rEnc = new Encoder(RobotMap.Right_EncoderA, RobotMap.Right_EncoderB, false, CounterBase.EncodingType.k4X);
@@ -55,22 +53,15 @@ public class Drive extends PIDSubsystem{
         rEnc.setPIDSourceParameter(PIDSource.PIDSourceParameter.kDistance);
         lEnc.start();
         rEnc.start();
-        LiveWindow.addSensor("Drive", "Left Encoder", lEnc);
-        LiveWindow.addSensor("Drive", "Right Encoder", rEnc);
         
         drive = new RobotDrive(lTal, rTal);
         drive.setSafetyEnabled(false);
         
         pid = new PIDController(P, I, D, source, output);
-        LiveWindow.addActuator("Drive", "PID", pid);
         
         laser = new AnalogChannel(RobotMap.Laser_Analog);
-        LiveWindow.addActuator("Drive", "Laser Analog", laser);
         
         gSol = new Solenoid(RobotMap.Gear_Solenoid);
-        LiveWindow.addActuator("Drive", "Gear Solenoid", gSol);
-        
-        laSol.set(true);
     }
        
     protected void usePIDOutput(double output){}

@@ -1,13 +1,15 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-public class LowGear extends CommandBase{
+import edu.wpi.first.wpilibj.templates.Global;
+
+public class ActEars extends CommandBase{
     
-    public LowGear() {
-        requires(dr);
+    public ActEars(){
+        requires(in);
     }
 
     protected void initialize(){
-        dr.ForceLow();
+        in.ActEars();
     }
 
     protected void execute(){}
@@ -17,6 +19,6 @@ public class LowGear extends CommandBase{
     }
 
     protected void end(){}
-
+    
     protected void interrupted(){}
 }

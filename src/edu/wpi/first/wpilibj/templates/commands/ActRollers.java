@@ -1,13 +1,13 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-public class Ears extends CommandBase{
+public class ActRollers extends CommandBase{
     
-    public Ears(){
+    public ActRollers(){
         requires(in);
     }
 
     protected void initialize(){
-        in.Ears();
+        in.ActRollers();
     }
 
     protected void execute(){}
