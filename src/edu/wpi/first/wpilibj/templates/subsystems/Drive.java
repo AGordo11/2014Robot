@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.JoystickDrive;
 
@@ -131,7 +130,7 @@ public class Drive extends PIDSubsystem{
     }
     
     public double getLaser(){
-        return laser.getAverageVoltage();
+        return laser.getAverageValue();
     }
     
     protected double returnPIDInput() {

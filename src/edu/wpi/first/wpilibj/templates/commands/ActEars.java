@@ -1,7 +1,5 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.Global;
-
 public class ActEars extends CommandBase{
     
     public ActEars(){

@@ -1,19 +1,13 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.Global;
-
 public class RunUpRollers extends CommandBase{
     
-    public RunUpRollers(){}
+    public RunUpRollers(){
+        requires(in);
+    }
 
     protected void initialize(){
-        if(!Global.isRun){
-            in.RunUpRollers(1.0);
-            Global.isRun = true;
-        }else{
-            in.RunUpRollers(0);
-            Global.isRun = false;
-        }
+        in.RunUpRollers();
     }
 
     protected void execute(){}

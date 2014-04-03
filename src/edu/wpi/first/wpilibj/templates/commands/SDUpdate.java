@@ -29,6 +29,12 @@ public class SDUpdate extends CommandBase{
         SmartDashboard.putString("Error ", Global.error);
         SmartDashboard.putString("Message ", Global.msg);
         
+        SmartDashboard.putBoolean("isActRoller? ", Global.isActRoller);
+        SmartDashboard.putBoolean("isRoller? ", Global.isRoller);
+        SmartDashboard.putBoolean("isEars? ", Global.isEars);
+        SmartDashboard.putBoolean("isUpRoller? ", Global.isUpRoller);
+        SmartDashboard.putBoolean("isAction? ", Global.isAction);
+        
         SmartDashboard.putNumber("Bound X ", Global.boundX);
         SmartDashboard.putNumber("Bound X2 ", Global.boundX2);
         SmartDashboard.putNumber("Bound Y", Global.boundY);

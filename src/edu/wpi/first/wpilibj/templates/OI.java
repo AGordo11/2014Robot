@@ -8,7 +8,7 @@ public class OI{
     Joystick lStick, rStick, sStick;
     JoystickButton lTrig, lBut2,
             rTrig,
-            sTrig, sBut2, sBut3, sBut4, sBut5, sBut6, sBut7, sBut8, sBut9, sBut10;
+            sTrig, sBut2, sBut3, sBut4, sBut5, sBut6, sBut7, sBut8, sBut9, sBut10, sBut12;
     
     public OI(){
         lStick = new Joystick(RobotMap.Left_Joystick);
@@ -29,6 +29,7 @@ public class OI{
         sBut8 = new JoystickButton(sStick, 8);
         sBut9 = new JoystickButton(sStick, 9);
         sBut10 = new JoystickButton(sStick, 10);
+        sBut12 = new JoystickButton(sStick, 12);
         
         lTrig.whenPressed(new ChangeGears());
         lBut2.whenPressed(new ResetEncoders());
@@ -39,10 +40,11 @@ public class OI{
         sBut4.whenPressed(new RetractChange());
         sBut5.whenPressed(new RunIntake());
         sBut6.whenPressed(new OpenIntake());
-        sBut7.whenPressed(new ActEars());
-        sBut8.whenPressed(new ActRollers());
-        sBut9.whenPressed(new RunUpRollers());
-        sBut10.whenPressed(new RunRollers());
+        sBut7.whenPressed(new RunRollers());
+        sBut8.whenPressed(new RunUpRollers());
+        sBut9.whenPressed(new ActRollers());
+        sBut10.whenPressed(new ActEars());
+        sBut12.whenPressed(new StartConfiguration());
     }
     
     public Joystick getLeftStick(){

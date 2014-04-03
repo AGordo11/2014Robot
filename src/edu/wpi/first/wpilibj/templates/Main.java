@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.*;
 
 public class Main extends IterativeRobot{
-    Command autoCom, comp, reset;
+    Command autoCom, comp, reset, start;
     DriverStation ds;
 
     public void robotInit(){
@@ -16,6 +16,7 @@ public class Main extends IterativeRobot{
         comp = new CompressorStart();
         reset = new ResetEncoders();
         autoCom = new AutoOne();
+        start = new StartConfiguration();
 
         CommandBase.init();
     }
@@ -26,6 +27,13 @@ public class Main extends IterativeRobot{
             autoCom = new AutoOne();
         }else if(ds.getDigitalIn(2)){
             autoCom = new AutoTwo();
+        }else if(ds.getDigitalIn(3)){
+            //autoCom = new AutoThree();
+            autoCom = new AutoTwo();
+        }else if(ds.getDigitalIn(4)){
+            autoCom = new AutoTwoL();
+        }else if(ds.getDigitalIn(5)){
+            autoCom = new AutoTwoR();
         }else if(ds.getDigitalIn(7)){
             autoCom = new AutoNone();
         }else if(ds.getDigitalIn(8)){
@@ -45,6 +53,7 @@ public class Main extends IterativeRobot{
         autoCom.cancel();
         comp.start();
         reset.start();
+        start.start();
     }
 
     public void teleopPeriodic(){

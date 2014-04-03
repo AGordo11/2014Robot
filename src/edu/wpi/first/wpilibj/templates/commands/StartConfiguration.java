@@ -1,13 +1,13 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-public class RunIntake extends CommandBase{
+public class StartConfiguration extends CommandBase{
     
-    public RunIntake(){
+    public StartConfiguration(){
         requires(in);
     }
 
     protected void initialize(){
-        in.RunIntake();
+        in.StartConfiguration();
     }
 
     protected void execute(){}

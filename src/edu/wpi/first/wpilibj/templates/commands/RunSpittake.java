@@ -1,7 +1,5 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.Global;
-
 public class RunSpittake extends CommandBase{
     
     public RunSpittake(){
@@ -9,15 +7,7 @@ public class RunSpittake extends CommandBase{
     }
 
     protected void initialize(){
-        if(!Global.isRun){
-            Global.isRun = true;
-            in.RunRollers(-1.0);
-            in.RunUpRollers(-1.0);
-        }else{
-            Global.isRun = false;
-            in.RunRollers(0);
-            in.RunUpRollers(0);
-        }
+        in.RunSpittake();
     }
 
     protected void execute(){}
