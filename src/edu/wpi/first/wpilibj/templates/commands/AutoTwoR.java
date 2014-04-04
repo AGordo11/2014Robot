@@ -25,9 +25,17 @@ public class AutoTwoR extends CommandGroup{
         addSequential(new WaitCommand(1.0));
         addSequential(new RunIntake());
         addSequential(new WaitCommand(1.0));
-        addSequential(new Spin(true));
+        if(!Global.isHot){
+            addSequential(new Spin(true));
+        }else{
+            addSequential(new Spin(false));
+        }
+        //addParallel(new GoForward(10));
         addSequential(new Shoot());
         addParallel(new Retract());
-        addSequential(new GoForward(120));
+        if(Global.isHot){
+            addSequential(new Spin(true));
+        }
+        addSequential(new GoForward(80));
     }
 }

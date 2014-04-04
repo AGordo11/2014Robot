@@ -5,26 +5,25 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.command.WaitForChildren;
 import edu.wpi.first.wpilibj.templates.Global;
 
-public class AutoTwo extends CommandGroup{
+public class AutoTest extends CommandGroup{
  
-    public AutoTwo(){
-        addParallel(new Retract());
+    public AutoTest(){
+        //addParallel(new Retract());
         addSequential(new OpenIntake());
-        addSequential(new WaitForChildren());
+        //addSequential(new WaitForChildren());
         addSequential(new OpenIntake());
         addSequential(new WhereHot());
-        addSequential(new Shoot());
-        addParallel(new Retract());
+        //addSequential(new Shoot());
+        //addParallel(new Retract());
         addSequential(new OpenIntake());
-        addSequential(new WaitForChildren());
+        //addSequential(new WaitForChildren());
         addSequential(new OpenIntake());
         addSequential(new RunIntake());
         addSequential(new WaitCommand(1.0));
         addSequential(new RunIntake());
         addSequential(new WaitCommand(1.0));
-        //addParallel(new GoForward(10));
-        addSequential(new Shoot());
-        addParallel(new Retract());
-        addSequential(new GoForward(80));
+        //addSequential(new Shoot());
+        //addParallel(new Retract());
+        addSequential(new GoForward(120));
     }
 }

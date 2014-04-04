@@ -20,8 +20,8 @@ public class Shooter extends Subsystem{
     
     public void initDefaultCommand(){}
     
-    public void Shoot(){
-        sTal.set(-1.0);
+    public void Shoot(double power){
+        sTal.set(power);
     }
     
     public void Stop(){

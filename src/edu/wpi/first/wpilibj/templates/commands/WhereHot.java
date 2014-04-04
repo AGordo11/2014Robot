@@ -14,8 +14,7 @@ public class WhereHot extends CommandBase{
             Global.boundY = SmartDashboard.getNumber("BOUNDY", 2.0);
             Global.boundY2 = SmartDashboard.getNumber("BOUNDY2", 1.0);
         }catch(Exception ex){}
-        
-        if(Global.boundX2 - Global.boundX >= 100 && Global.boundY2 - Global.boundY >= 50){
+        if(Global.boundY2 >= 80 && (Global.boundY2 - Global.boundY) >= 10 && (Global.boundX2 - Global.boundX) >= 80){
             Global.isHot = true;
         }else{
             Global.isHot = false;

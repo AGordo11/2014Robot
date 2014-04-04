@@ -25,9 +25,17 @@ public class AutoTwoL extends CommandGroup{
         addSequential(new WaitCommand(1.0));
         addSequential(new RunIntake());
         addSequential(new WaitCommand(1.0));
-        addSequential(new Spin(false));
+        if(!Global.isHot){
+            addSequential(new Spin(false));
+        }else{
+            addSequential(new Spin(true));
+        }
+        //
         addSequential(new Shoot());
         addParallel(new Retract());
-        addSequential(new GoForward(120));
+        if(Global.isHot){
+            addSequential(new Spin(true));
+        }
+        addSequential(new GoForward(80));
     }
 }

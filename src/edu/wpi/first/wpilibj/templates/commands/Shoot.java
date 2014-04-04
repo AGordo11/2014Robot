@@ -17,7 +17,7 @@ public class Shoot extends CommandBase{
             timer.start();
             if(Global.isRetract){
                 in.OpenIntake();
-                sh.Shoot();
+                sh.Shoot(-1.0);
                 Global.msg = "Shooting...";
                 Global.error = "";
             }else{

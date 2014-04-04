@@ -34,6 +34,8 @@ public class Main extends IterativeRobot{
             autoCom = new AutoTwoL();
         }else if(ds.getDigitalIn(5)){
             autoCom = new AutoTwoR();
+        }else if(ds.getDigitalIn(6)){
+            autoCom = new AutoTest();
         }else if(ds.getDigitalIn(7)){
             autoCom = new AutoNone();
         }else if(ds.getDigitalIn(8)){

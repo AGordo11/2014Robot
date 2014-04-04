@@ -14,7 +14,7 @@ public class Retract extends CommandBase{
     protected void initialize(){
         timer.start();
         if(!Global.isRetract){
-            sh.Shoot();
+            sh.Shoot(-1.0);
             Global.msg = "Retracting...";
             Global.error = "";
         }else{
@@ -26,7 +26,7 @@ public class Retract extends CommandBase{
     protected void execute(){}
 
     protected boolean isFinished(){
-        if(Global.isRetract || timer.get() >= 4){
+        if(Global.isRetract){
             sh.Stop();
             Global.msg = "Retracted";
             Global.error = "";
