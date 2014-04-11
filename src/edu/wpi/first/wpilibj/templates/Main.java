@@ -27,9 +27,6 @@ public class Main extends IterativeRobot{
             autoCom = new AutoOne();
         }else if(ds.getDigitalIn(2)){
             autoCom = new AutoTwo();
-        }else if(ds.getDigitalIn(3)){
-            //autoCom = new AutoThree();
-            autoCom = new AutoTwo();
         }else if(ds.getDigitalIn(4)){
             autoCom = new AutoTwoL();
         }else if(ds.getDigitalIn(5)){

@@ -1,39 +1,38 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.Global;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.templates.Global;
 
-public class Retract extends CommandBase{
-    Timer timer;
+public class TwoShoot extends CommandBase{
+    Timer timer = new Timer();
     
-    public Retract(){
+    public TwoShoot(){
         requires(sh);
-        timer = new Timer();
     }
 
     protected void initialize(){
         timer.start();
-        if(!Global.isRetract){
-            sh.Shoot(-1.0);
-        }
+        sh.Shoot(-1.0);
     }
 
     protected void execute(){}
 
     protected boolean isFinished(){
-        if(Global.isRetract){
+        if(timer.get() >= 0.5){
             sh.Stop();
+            Global.isRetract = false;
+            timer.reset();
+            while(timer.get() <= 0.2){}
+            in.ActEars();
+            timer.stop();
+            timer.reset();
             return true;
         }else{
             return false;
         }
     }
 
-    protected void end(){
-        sh.Stop();
-        timer.stop();
-        timer.reset();
-    }
+    protected void end(){}
 
     protected void interrupted(){
         sh.Stop();

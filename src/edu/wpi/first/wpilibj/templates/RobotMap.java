@@ -30,7 +30,4 @@ public class RobotMap{
     public static final int Ears_SolenoidB = 3;
     public static final int Intake_SolenoidA = 4;
     public static final int Intake_SolenoidB = 5;
-    
-    //Analog Inputs
-    public static final int Laser_Analog = 2;
 }

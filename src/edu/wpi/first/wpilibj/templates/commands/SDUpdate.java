@@ -15,19 +15,12 @@ public class SDUpdate extends CommandBase{
         if(sh.getSensor()){
             Global.isRetract = true;
         }
-        SmartDashboard.putNumber("Left Output ", -dr.getLeftMotor());
-        SmartDashboard.putNumber("Right Output ", dr.getRightMotor());
         SmartDashboard.putNumber("Left Encoder ", dr.getLeftEnc());
         SmartDashboard.putNumber("Right Encoder ", dr.getRightEnc());
-        SmartDashboard.putNumber("Roller Output ", in.getUpRollers());
-        SmartDashboard.putNumber("Roller Output ", in.getRollers());
-        SmartDashboard.putNumber("Laser Distance ", dr.getLaser());
         SmartDashboard.putBoolean("High Gear ", dr.highGear());
         SmartDashboard.putBoolean("Is Hot? ", Global.isHot);
         SmartDashboard.putBoolean("Is Retracted? ", Global.isRetract);
         SmartDashboard.putBoolean("Shooter Sensor ", sh.getSensor());
-        SmartDashboard.putString("Error ", Global.error);
-        SmartDashboard.putString("Message ", Global.msg);
         
         SmartDashboard.putBoolean("isActRoller? ", Global.isActRoller);
         SmartDashboard.putBoolean("isRoller? ", Global.isRoller);
@@ -35,10 +28,10 @@ public class SDUpdate extends CommandBase{
         SmartDashboard.putBoolean("isUpRoller? ", Global.isUpRoller);
         SmartDashboard.putBoolean("isAction? ", Global.isAction);
         
-        SmartDashboard.putNumber("Bound X ", Global.boundX);
+        /*SmartDashboard.putNumber("Bound X ", Global.boundX);
         SmartDashboard.putNumber("Bound X2 ", Global.boundX2);
         SmartDashboard.putNumber("Bound Y", Global.boundY);
-        SmartDashboard.putNumber("Bound Y2 ", Global.boundY2);
+        SmartDashboard.putNumber("Bound Y2 ", Global.boundY2);*/
     }
 
     protected boolean isFinished(){

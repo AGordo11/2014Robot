@@ -17,12 +17,9 @@ public class Shoot extends CommandBase{
             timer.start();
             if(Global.isRetract){
                 in.OpenIntake();
+                while(timer.get() <= 0.2){}
+                timer.reset();
                 sh.Shoot(-1.0);
-                Global.msg = "Shooting...";
-                Global.error = "";
-            }else{
-                Global.msg = "See error";
-                Global.error = "Not retracted";
             }
         }
     }
@@ -33,9 +30,9 @@ public class Shoot extends CommandBase{
         if(timer.get() >= 0.5){
             sh.Stop();
             Global.isRetract = false;
+            timer.reset();
+            while(timer.get() <= 0.2){}
             in.StartConfiguration();
-            Global.msg = "Finished shooting";
-            Global.error = "";
             timer.stop();
             timer.reset();
             return true;
@@ -47,8 +44,6 @@ public class Shoot extends CommandBase{
     protected void end(){}
 
     protected void interrupted(){
-        Global.msg = "See error";
-        Global.error = "Shooting interrupted";
         sh.Stop();
         in.StartConfiguration();
         timer.stop();

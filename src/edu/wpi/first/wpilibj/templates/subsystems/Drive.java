@@ -58,8 +58,6 @@ public class Drive extends PIDSubsystem{
         
         pid = new PIDController(P, I, D, source, output);
         
-        laser = new AnalogChannel(RobotMap.Laser_Analog);
-        
         gSol = new Solenoid(RobotMap.Gear_Solenoid);
     }
        

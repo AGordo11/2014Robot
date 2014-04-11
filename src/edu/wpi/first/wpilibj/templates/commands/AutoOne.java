@@ -13,10 +13,13 @@ public class AutoOne extends CommandGroup{
         addSequential(new WaitForChildren());
         addSequential(new OpenIntake());
         addSequential(new WhereHot());
+        addSequential(new GoForward(40));
         if(!Global.isHot){
-            addSequential(new WaitCommand(3.0));
+            addSequential(new WaitCommand(2.0));
+        }else{
+            //addSequential(new WaitCommand(0.5));
         }
         addSequential(new Shoot());
-        addSequential(new GoForward(120));
+        addSequential(new GoForward(50));
     }
 }

@@ -39,7 +39,10 @@ public class Intake extends Subsystem{
     public void IntakeConfiguration(){
         timer.start();
         rollers.set(DoubleSolenoid.Value.kReverse);
-        while(timer.get() <= 1.0){}
+        while(timer.get() <= 0.8){
+            rTal.set(1.0);
+            uTal.set(1.0);
+        }
         timer.stop();
         timer.reset();
         uTal.set(0);
@@ -49,6 +52,22 @@ public class Intake extends Subsystem{
         Global.isRoller = false;
         Global.isUpRoller = false;
         Global.isAction = false;
+    }
+    
+    public void QuickPickup(){
+        timer.start();
+        while(timer.get() <= 0.4){
+            rTal.set(1.0);
+        }
+        rTal.set(0);
+    }
+    
+    public void MedPickup(){
+        timer.start();
+        while(timer.get() <= 0.8){
+            rTal.set(1.0);
+        }
+        rTal.set(0);
     }
     
     public void ActEars(){
@@ -122,6 +141,22 @@ public class Intake extends Subsystem{
             if(!Global.isRoller){
                 Global.isRoller = true;
                 rTal.set(-1.0);
+            }
+            Global.isAction = true;
+        }
+    }
+    
+    public void PickupStationary(){
+        if(Global.isAction){
+            StartConfiguration();
+        }else{
+            if(!Global.isUpRoller){
+                Global.isUpRoller = true;
+                uTal.set(1.0);
+            }
+            if(!Global.isRoller){
+                Global.isRoller = true;
+                rTal.set(1.0);
             }
             Global.isAction = true;
         }
