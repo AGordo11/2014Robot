@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoNone extends CommandGroup{
     
     public AutoNone() {
-        addSequential(new GoForward(125));
+        addParallel(new GoForward(60));
         addSequential(new Retract());
     }
 }

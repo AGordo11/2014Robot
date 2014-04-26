@@ -15,12 +15,17 @@ public class SDUpdate extends CommandBase{
         if(sh.getSensor()){
             Global.isRetract = true;
         }
+        if(Global.isRetract && in.getSensor()){
+            Global.isBall = true;
+        }else{
+            Global.isBall = false;
+        }
         SmartDashboard.putNumber("Left Encoder ", dr.getLeftEnc());
         SmartDashboard.putNumber("Right Encoder ", dr.getRightEnc());
         SmartDashboard.putBoolean("High Gear ", dr.highGear());
-        SmartDashboard.putBoolean("Is Hot? ", Global.isHot);
         SmartDashboard.putBoolean("Is Retracted? ", Global.isRetract);
         SmartDashboard.putBoolean("Shooter Sensor ", sh.getSensor());
+        SmartDashboard.putBoolean("Ball Sensor ", in.getSensor());
         
         SmartDashboard.putBoolean("isActRoller? ", Global.isActRoller);
         SmartDashboard.putBoolean("isRoller? ", Global.isRoller);
@@ -28,10 +33,7 @@ public class SDUpdate extends CommandBase{
         SmartDashboard.putBoolean("isUpRoller? ", Global.isUpRoller);
         SmartDashboard.putBoolean("isAction? ", Global.isAction);
         
-        /*SmartDashboard.putNumber("Bound X ", Global.boundX);
-        SmartDashboard.putNumber("Bound X2 ", Global.boundX2);
-        SmartDashboard.putNumber("Bound Y", Global.boundY);
-        SmartDashboard.putNumber("Bound Y2 ", Global.boundY2);*/
+        SmartDashboard.putBoolean("Current right: ", Global.isHotRight);
     }
 
     protected boolean isFinished(){

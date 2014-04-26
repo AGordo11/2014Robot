@@ -18,9 +18,9 @@ public class Spin extends CommandBase{
 
     protected void execute(){
         if(right){
-            dr.TankDrive(-1.0, 1.0);//Spins right
+            dr.TankDrive(-0.7, 0.7);//Spins right
         }else{
-            dr.TankDrive(1.0, -1.0);//Spins left
+            dr.TankDrive(0.7, -0.7);//Spins left
         }
     }
 

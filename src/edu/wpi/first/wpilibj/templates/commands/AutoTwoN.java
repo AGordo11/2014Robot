@@ -1,25 +1,25 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.templates.Global;
-import edu.wpi.first.wpilibj.command.WaitForChildren;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
-public class AutoTwo extends CommandGroup{
+public class AutoTwoN extends CommandGroup{
  
-    public AutoTwo(){
+    public AutoTwoN(){
         addSequential(new OpenIntake());
         addParallel(new QuickPickup());
         addSequential(new Retract());
         addSequential(new ActEars());
-        addSequential(new GoForward(40));
+        addSequential(new GoForward(45));
         addSequential(new ActEars());
+        addSequential(new WaitCommand(0.5));
         addSequential(new TwoShoot());
         addSequential(new Retract());
         addSequential(new MedPickup());
         addSequential(new RunIntake());
+        addSequential(new WaitCommand(0.4));
         addSequential(new Shoot());
         addParallel(new Retract());
-        addSequential(new GoForward(40));
         addSequential(new StartConfiguration());
     }
 }

@@ -31,7 +31,9 @@ public class Shoot extends CommandBase{
             sh.Stop();
             Global.isRetract = false;
             timer.reset();
-            while(timer.get() <= 0.2){}
+            while(in.getSensor() && timer.get() <= 1.0){}
+            timer.reset();
+            while(timer.get() <= 0.5){}
             in.StartConfiguration();
             timer.stop();
             timer.reset();

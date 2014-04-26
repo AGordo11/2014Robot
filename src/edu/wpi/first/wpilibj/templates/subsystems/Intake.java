@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
@@ -9,6 +10,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 
 public class Intake extends Subsystem{
     Timer timer;
+    DigitalInput bSen;
     DoubleSolenoid ears, rollers;
     Talon rTal, uTal;
 
@@ -22,6 +24,8 @@ public class Intake extends Subsystem{
         
         ears = new DoubleSolenoid(RobotMap.Ears_SolenoidA, RobotMap.Ears_SolenoidB);
         rollers = new DoubleSolenoid(RobotMap.Intake_SolenoidA, RobotMap.Intake_SolenoidB);
+        
+        bSen = new DigitalInput(RobotMap.Ball_Sensor);
     }
     
     public void StartConfiguration(){
@@ -38,10 +42,13 @@ public class Intake extends Subsystem{
     
     public void IntakeConfiguration(){
         timer.start();
-        rollers.set(DoubleSolenoid.Value.kReverse);
-        while(timer.get() <= 0.8){
-            rTal.set(1.0);
-            uTal.set(1.0);
+        rollers.set(DoubleSolenoid.Value.kReverse);  
+        rTal.set(1.0);
+        uTal.set(1.0);
+        while(!Global.isBall && timer.get() <= 1.2){
+            if(getSensor()){
+                Global.isBall = true;
+            }
         }
         timer.stop();
         timer.reset();
@@ -188,5 +195,9 @@ public class Intake extends Subsystem{
     
     public double getRollers(){
         return rTal.get();
+    }
+    
+    public boolean getSensor(){
+        return !bSen.get();
     }
 }

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.templates.commands.*;
 public class OI{
     Joystick lStick, rStick, sStick;
     JoystickButton lTrig, lBut2,
-            rTrig,
+            rTrig, rBut11,
             sTrig, sBut2, sBut3, sBut4, sBut5, sBut6, sBut7, sBut8, sBut9, sBut10, sBut11, sBut12;
     
     public OI(){
@@ -17,6 +17,7 @@ public class OI{
         
         rStick = new Joystick(RobotMap.Right_Joystick);
         rTrig = new JoystickButton(rStick, 1);
+        rBut11 = new JoystickButton(rStick, 11);
         
         sStick = new Joystick(RobotMap.Shooter_Joystick);
         sTrig = new JoystickButton(sStick, 1);
@@ -34,6 +35,8 @@ public class OI{
         
         lTrig.whenPressed(new ChangeGears());
         lBut2.whenPressed(new ResetEncoders());
+        
+        rBut11.whenPressed(new Spin(true));
 
         sTrig.whenPressed(new Shoot());
         sBut2.whileHeld(new Retract());

@@ -23,6 +23,7 @@ public class RobotMap{
     public static final int Left_EncoderB = 4;
     public static final int Left_EncoderA = 5;
     public static final int Shooter_Sensor = 6;
+    public static final int Ball_Sensor = 7;
     
     //Solenoids
     public static final int Gear_Solenoid = 1;
