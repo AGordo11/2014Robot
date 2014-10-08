@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Automatic command--opens and closes pneumatic wings and rollers
+
 public class OpenIntake extends CommandBase {
     
     public OpenIntake(){

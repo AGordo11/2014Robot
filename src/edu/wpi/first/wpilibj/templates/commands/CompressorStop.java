@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Stops compressor after the digital switch surpasses a certain value. Yeah.
+
 public class CompressorStop extends CommandBase{
     
     public CompressorStop(){

@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates;
 
+//Where it all begins
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,6 +18,7 @@ public class Main extends IterativeRobot{
     public final int listenPort = 1180;
     
     public void robotInit(){
+        //Initiates starting commands
         serv = CheesyVisionServer.GetInstance();
         ds = DriverStation.getInstance();
         comp = new CompressorStart();
@@ -32,9 +35,9 @@ public class Main extends IterativeRobot{
     public void autonomousInit(){
         serv.Reset();
         serv.StartSamplingCounts();
-        
         Global.isRetract = false;
         
+        //Picks an auto command based on the DI input on the DS (DriverStation)
         if(ds.getDigitalIn(1)){
             autoCom = new AutoOneL();
         }else if(ds.getDigitalIn(2)){
@@ -48,7 +51,7 @@ public class Main extends IterativeRobot{
         }else if(ds.getDigitalIn(8)){
             autoCom = new AutoNone();
         }else{
-            autoCom = new AutoOneR();
+            autoCom = new AutoOneR();//If a DI isn't pushed on the DS, robot automatically shoots one as if it was on the right
         }
         reset.start();
         autoCom.start();
@@ -64,6 +67,7 @@ public class Main extends IterativeRobot{
     }
 
     public void teleopInit(){
+        //Stops the auto command when teleop initializes
         autoCom.cancel();
         comp.start();
         reset.start();

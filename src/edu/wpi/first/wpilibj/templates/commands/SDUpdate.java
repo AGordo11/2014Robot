@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Sends a regular update to the SmartDashboard with wanted values
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.Global;
 
@@ -12,6 +14,8 @@ public class SDUpdate extends CommandBase{
     protected void initialize(){}
 
     protected void execute(){
+        //Checks for the limit switches and returns true or false
+        //Limit switches are: ball sensor and arm sensor (photoelectric)
         if(sh.getSensor()){
             Global.isRetract = true;
         }
@@ -22,6 +26,7 @@ public class SDUpdate extends CommandBase{
         }
         SmartDashboard.putNumber("Left Encoder ", dr.getLeftEnc());
         SmartDashboard.putNumber("Right Encoder ", dr.getRightEnc());
+        SmartDashboard.putNumber("Right Throttle ", oi.getRightZ());
         SmartDashboard.putBoolean("High Gear ", dr.highGear());
         SmartDashboard.putBoolean("Is Retracted? ", Global.isRetract);
         SmartDashboard.putBoolean("Shooter Sensor ", sh.getSensor());

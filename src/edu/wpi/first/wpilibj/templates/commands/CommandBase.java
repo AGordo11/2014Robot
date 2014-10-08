@@ -1,5 +1,8 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Initializes such things as OI, Intake and Drive subsystems--every subsystem
+//needs to be called here first
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.subsystems.*;

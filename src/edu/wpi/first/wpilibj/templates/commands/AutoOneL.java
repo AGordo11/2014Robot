@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//One-ball autonomous, delays if hot on right side
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.command.WaitForChildren;

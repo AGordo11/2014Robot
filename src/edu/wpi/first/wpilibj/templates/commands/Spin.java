@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Inclines the robot a slight bit to the right or left, used in auto primarily
+
 import edu.wpi.first.wpilibj.Timer;
 
 public class Spin extends CommandBase{

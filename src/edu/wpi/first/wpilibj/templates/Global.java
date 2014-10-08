@@ -1,5 +1,8 @@
 package edu.wpi.first.wpilibj.templates;
 
+//Makes the pneumatics and intake talons all follow a I/O pattern
+//These booleans allow for automatic commands like RunIntake and RunSpittake
+
 public class Global{
     public static boolean isRetract = false;//Is the catapult retracted?
     public static boolean isRoller = false;

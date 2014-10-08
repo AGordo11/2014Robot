@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Changes gears--straightforward, innit?
+
 public class ChangeGears extends CommandBase{
     
     public ChangeGears(){

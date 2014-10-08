@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//A simple command to run the rollers inward
+
 public class RunRollers extends CommandBase{
     
     public RunRollers(){

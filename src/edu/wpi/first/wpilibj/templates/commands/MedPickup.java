@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//A longer version of QuickPickup--see that command for further details
+
 public class MedPickup extends CommandBase{
     
     public MedPickup(){

@@ -45,7 +45,7 @@ public class Intake extends Subsystem{
         rollers.set(DoubleSolenoid.Value.kReverse);  
         rTal.set(1.0);
         uTal.set(1.0);
-        while(!Global.isBall && timer.get() <= 1.2){
+        while(!Global.isBall && timer.get() <= 0.9){
             if(getSensor()){
                 Global.isBall = true;
             }
@@ -71,7 +71,7 @@ public class Intake extends Subsystem{
     
     public void MedPickup(){
         timer.start();
-        while(timer.get() <= 0.8){
+        while(timer.get() <= 1.0){
             rTal.set(1.0);
         }
         rTal.set(0);

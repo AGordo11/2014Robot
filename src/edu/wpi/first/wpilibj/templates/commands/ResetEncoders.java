@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Reset encoders. Pretty obvious
+
 public class ResetEncoders extends CommandBase{
     
     public ResetEncoders(){

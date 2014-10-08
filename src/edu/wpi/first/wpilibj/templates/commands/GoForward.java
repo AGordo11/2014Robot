@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Moves forward a set distance as read by the encoders (calibrated for inches)
+
 import edu.wpi.first.wpilibj.Timer;
 
 public class GoForward extends CommandBase{

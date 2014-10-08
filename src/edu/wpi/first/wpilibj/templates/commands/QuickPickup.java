@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Starts roller motors briefly to hold the ball in just the rollers--used for auto
+
 public class QuickPickup extends CommandBase{
     
     public QuickPickup(){

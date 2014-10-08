@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates;
 
+//Yeah, I changed a few things here, I like my code a certain way
+
 import edu.wpi.first.wpilibj.Timer;
 import java.io.IOException;
 import java.io.InputStream;
@@ -124,8 +126,7 @@ public class CheesyVisionServer implements Runnable{
                         }
                         lastHeartbeat = Timer.getFPGATimestamp();
                         CheesyVisionServer.this.lastHeartbeatTime = lastHeartbeat;
-                    }
-                    try{
+                    }try{
                         Thread.sleep(50);
                     }catch(InterruptedException ex){
                         System.out.println("Thread sleep failed.");

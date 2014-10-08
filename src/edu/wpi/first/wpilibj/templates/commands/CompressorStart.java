@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Starts compressor. Yeah.
+
 public class CompressorStart extends CommandBase{
     
     public CompressorStart(){

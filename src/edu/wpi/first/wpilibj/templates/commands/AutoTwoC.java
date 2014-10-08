@@ -1,5 +1,8 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Two-ball autonomous, inclines to hot side and shoots, then picks up ball, 
+//inclines the other way and shoots on the other side for two hot shots
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.templates.Global;

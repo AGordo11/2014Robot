@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates;
 
+//Starts up the joysticks, their buttons and the buttons' functions
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.*;
@@ -52,13 +54,21 @@ public class OI{
         sBut12.whenPressed(new StartConfiguration());
     }
     
-    public Joystick getLeftStick(){
-        return lStick;
+    //public Joystick getLeftStick(){
+        //return lStick;
+    //}
+    
+    public double getLeftStick(){
+        return lStick.getY();
     }
     
-    public Joystick getRightStick(){
-        return rStick;
+    public double getRightStick(){
+        return rStick.getY();
     }
+    
+    //public Joystick getRightStick(){
+        //return rStick;
+    //}
     
     public Joystick getShooterStick(){
         return sStick;
@@ -67,5 +77,8 @@ public class OI{
     public double getShooterY(){
         return sStick.getY();
     }
+    
+    public double getRightZ(){
+        return (rStick.getZ() + 1) / 2;
+    }
 }
-

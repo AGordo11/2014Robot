@@ -1,5 +1,8 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//A specialized shooting for two-ball auto so that the second ball can still be 
+//held while the first retracted ball shoots
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.templates.Global;
 

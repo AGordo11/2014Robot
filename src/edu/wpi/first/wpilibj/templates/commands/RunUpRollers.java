@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//A simple command to run or stop the upper wheels (inwards only)
+
 public class RunUpRollers extends CommandBase{
     
     public RunUpRollers(){

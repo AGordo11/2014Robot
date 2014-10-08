@@ -20,7 +20,6 @@ public class Drive extends PIDSubsystem{
     public static final double D = 0;
     public static double pulseDistance = .0918762;//How many inches are displaced per encoder pulse
     
-    AnalogChannel laser;
     Encoder lEnc, rEnc;
     RobotDrive drive;
     Solenoid gSol, laSol;
@@ -77,8 +76,13 @@ public class Drive extends PIDSubsystem{
         }
     }
     
-    public void DriveJoysticks(Joystick lStick, Joystick rStick){
-        drive.tankDrive(lStick, rStick);
+    //public void DriveJoysticks(Joystick lStick, Joystick rStick){
+        //drive.tankDrive(lStick, rStick);
+    //}
+    
+    public void DriveJoysticks(double lStick, double rStick){
+        lTal.set(lStick);
+        rTal.set(rStick);
     }
         
     public void initDefaultCommand(){
@@ -125,10 +129,6 @@ public class Drive extends PIDSubsystem{
     
     public double getRightMotor(){
         return rTal.get();
-    }
-    
-    public double getLaser(){
-        return laser.getAverageValue();
     }
     
     protected double returnPIDInput() {

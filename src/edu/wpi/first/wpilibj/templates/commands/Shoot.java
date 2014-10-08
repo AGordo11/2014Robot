@@ -1,5 +1,9 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//If the arm is retracted, shoots the ball and stops when it is done firing
+//Opens intake before firing and closes it afterwards to prevent the wings from
+//getting in the way of the ball
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.templates.Global;
 

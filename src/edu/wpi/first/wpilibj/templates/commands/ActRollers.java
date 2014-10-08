@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//Actuates the pneumatic rollers up or down
+
 public class ActRollers extends CommandBase{
     
     public ActRollers(){

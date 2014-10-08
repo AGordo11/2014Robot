@@ -1,5 +1,8 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+//As long as the auto command or button is held down, arm will retract until the 
+//limit switch has been tripped
+
 import edu.wpi.first.wpilibj.templates.Global;
 import edu.wpi.first.wpilibj.Timer;
 
